@@ -8,73 +8,59 @@ sir_dt <- data.table::fread("data/SIR_table_for_VfM_linked.csv")
 dt <-
   data.table::merge.data.table(main_dt, sir_dt, by = c("client_random_id", "n_jy"))
 
+# Add a year column
+dt[, year := lubridate::year(submoddt)]
+
 # Since the SIR table doesn't specify a drug group
 # check that ID-JY pairs not in the opiate group have been included
 assertthat::assert_that(unique(dt[["drug_grp"]]) == "Opiate")
 
 # We cannot count by the `submoddt` month since we would be
 # measuring the number of SIRs per month, not the number of clients.
-# Assumption that
-estimate_counts_per_year <-
-  function(dt) {
+# This count is an estimate since it relies on a choice to count a
+# client with one (or more) SIR indicating the subintervention as
+# being counted as receiving that subintervention. It is possible,
+# although unlikely, that a client could be counted after only
+# receiving the subintervention for a few days.
+estimate_subint_count_by_yr <-
+  function(dt, subintervention = "phbudi_any", groupby = NULL) {
 
     # Remove post-discharge SIRs since we want people in treatment
-
     dt <- dt[post_discharge == "N", ]
 
-    # Select columns for identifier pair, date of SIR and LAB status
-    # indicated at SIR
+    # Required columns
+    base_cols <- c("year", "client_random_id", "n_jy", "submoddt", subintervention)
 
-    dt <- dt[, .(client_random_id, n_jy, submoddt, phbudi_any)]
+    # Additional grouping columns
+    all_cols <- if (!is.null(groupby)) c(base_cols, groupby) else base_cols
 
+    # Select and rename the columns
+    dt <- dt[, ..all_cols]
 
-    # Add a year column
-    dt[, year := lubridate::year(submoddt)]
+    # Add an `other_ost` column: 1 if `subintervention` is NOT 1, otherwise 0
+    dt[, other_ost := data.table::fifelse(get(subintervention) == 1L, 0L, 1L)]
 
-    # To count clients by year we can:
-    # 1. Add an Other OST column, since we'd otherwise lost non-LAB
-    # clients in aggregation.
-    dt[, other_ost := data.table::fifelse(phbudi_any == 1L, 0L, 1L)]
-    # 2. Aggregate by year AND unique client ID
+    # 2. Aggregate by year AND unique client ID (plus `groupby` if provided)
+    group_vars <- c("client_random_id", "year", groupby)
+
     dt <-
-      dt[, lapply(.SD, sum),                     # sum aggregation
-         by = .(client_random_id, year),         # by unique ID and year
-         .SDcols = c("phbudi_any", "other_ost")] # across the OST binary cols
+      dt[, lapply(.SD, sum),
+         by = group_vars,
+         .SDcols = c(subintervention, "other_ost")]
 
-    # 3. Here we have to make a choice to count any client who was indicated as
-    # receiving LAB at one or more SIR in a calendar year as a LAB client for
-    # that year, otherwise they are counted as other OST.
-    # By this choice we can convert the OST cols back from count to binary:
+    # 3. Convert to back to binary: if SIR indicated subintervention
+    # once or more within a year then 1, else 0
     dt <-
       dt[, lapply(.SD, function(x) data.table::fifelse(x > 0, 1, 0)),
-        by = year,
-        .SDcols = c("phbudi_any", "other_ost")
-      ]
+         by = c("year", groupby),
+         .SDcols = c(subintervention, "other_ost")]
 
-    # Add a column with implied toal OST clients
-    dt[, total_ost := phbudi_any + other_ost]
+    # 4. Add total OST column
+    dt[, total_ost := get(subintervention) + other_ost]
 
-    # Sum by year
+    # 5. Sum by year (and `groupby` if provided)
     dt <-
-      dt[, lapply(.SD, sum), by = year]
+      dt[, lapply(.SD, sum), by = c("year", groupby)]
 
+    return(dt)
   }
-
-
-library(ggplot2)
-
-afcharts::use_afcharts()
-
-sir_dt |>
-  ggplot(aes(x = year)) +
-  geom_col(aes(y = phbudi_any))
-
-
-sir_dt |>
-  ggplot(aes(x = year)) +
-  geom_col(aes(y = phbudi_any/total_ost))
-
-sir_dt |>
-  tidyr::pivot_longer(cols = c(phbudi_any, other_ost)) |>
-  ggplot(aes(x = year, y = value, group = name)) +
-  geom_col(aes(fill = name))

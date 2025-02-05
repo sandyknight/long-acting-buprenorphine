@@ -101,4 +101,116 @@ dt_res <-
    data.table::rbindlist(dt_list)
 
 
-dt_res
+dt_rr <-
+  dt_res[, .(year, disrsn, depot_bupe, no_depot_bupe)]
+
+
+dt_rr[, disrsn := data.table::fifelse(disrsn == "Died",
+                                      "Died",
+                                      "Did not die")]
+
+
+dt_rr <-
+  dt_rr[, lapply(.SD, sum), by = .(year, disrsn)]
+
+
+
+# +-----------------+------------------+------------+
+# | Group           | Treatment (T)    | Control (C)|
+# +-----------------+------------------+------------+
+# | Events (E)      | IE               | CE         |
+# | Non-events (N)  | IN               | CN         |
+# +-----------------+------------------+------------+
+
+
+calculate_rr_point_estimate <-
+  function(dt, yr, invert = "false") {
+
+    switch(invert,
+      "false" = {
+
+        te <- dt[year == yr, ][disrsn == "Died", .(depot_bupe)]
+        tn <- dt[year == yr, ][disrsn == "Did not die", .(depot_bupe)]
+        ce <- dt[year == yr, ][disrsn == "Died", .(no_depot_bupe)]
+        cn <- dt[year == yr, ][disrsn == "Did not die", .(no_depot_bupe)]},
+      "true" =  {
+        te <- dt[year == yr, ][disrsn == "Died", .(no_depot_bupe)]
+        tn <- dt[year == yr, ][disrsn == "Did not die", .(no_depot_bupe)]
+        ce <- dt[year == yr, ][disrsn == "Died", .(depot_bupe)]
+        cn <- dt[year == yr, ][disrsn == "Did not die", .(depot_bupe)]})
+
+    rr <- (te * (ce + cn)) / (ce * (te + tn))
+
+    rr <- as.numeric(rr)
+
+    return(rr)
+  }
+
+calculate_rr_CIs <-
+  function(dt, yr, invert = "false") {
+
+    switch(invert,
+      "false" = {
+
+        te <- dt[year == yr, ][disrsn == "Died", .(depot_bupe)]
+        tn <- dt[year == yr, ][disrsn == "Did not die", .(depot_bupe)]
+        ce <- dt[year == yr, ][disrsn == "Died", .(no_depot_bupe)]
+        cn <- dt[year == yr, ][disrsn == "Did not die", .(no_depot_bupe)]},
+      "true" =  {
+        te <- dt[year == yr, ][disrsn == "Died", .(no_depot_bupe)]
+        tn <- dt[year == yr, ][disrsn == "Did not die", .(no_depot_bupe)]
+        ce <- dt[year == yr, ][disrsn == "Died", .(depot_bupe)]
+        cn <- dt[year == yr, ][disrsn == "Did not die", .(depot_bupe)]})
+
+    rr <- (te * (ce + cn)) / (ce * (te + tn))
+
+
+
+    CI_log_rr <- log(rr) + c(-1, 1) * se_log_rr * z_alpha
+
+    rr <- as.numeric(rr)
+
+    return(rr)
+  }
+rr_depot <-
+  vapply(X = yrs,
+         FUN.VALUE = numeric(1),
+         FUN = function(x) calculate_rr_point_estimate(dt = dt_rr,
+                                                       yr = x,
+                                                       invert = "false"))
+
+
+rr_no_depot <-
+  vapply(X = yrs,
+         FUN.VALUE = numeric(1),
+         FUN = function(x) calculate_rr_point_estimate(dt = dt_rr,
+                                                       yr = x,
+                                                       invert = "true"))
+
+rr_res_dt <-
+  data.frame("year" = yrs,
+             "mortality_RR_depot" = rr_depot,
+             "mortality_RR_no_depot" = rr_no_depot)
+
+
+
+
+## library(ggplot2)
+
+
+## dtres_long <-
+##   data.table::melt(dt_res[, .(year, disrsn, depot_bupe, no_depot_bupe)],
+##                    measure.vars = c("depot_bupe", "no_depot_bupe"))
+
+## dtres_long_rate <-
+##   data.table::melt(dt_res[, .(year, disrsn, depot_rate, no_depot_rate)],
+##                    measure.vars = c("depot_rate", "no_depot_rate"))
+
+
+
+
+## afcharts::use_afcharts()
+
+## dtres_long_rate[disrsn == "Died"] |>
+##   ggplot(aes(x = year, y = value)) +
+##   geom_col(aes(fill = variable), position = "dodge")

@@ -22,10 +22,14 @@ dt[, year := lubridate::year(submoddt)]
 
 dt[, disrsn := data.table::fifelse(is.na(disd), "Retained", disrsn)]
 
-dt[, disrsn := data.table::fifelse(disrsn %chin% c("Exit reason inconsistent",
-                                                    "Incomplete/other",
-                                                    "Moved away, referred on or transferred not in custody"),
-                                    "Other", disrsn), ]
+dt[, disrsn := data.table::fifelse(
+  disrsn %chin% c(
+    "Exit reason inconsistent",
+    "Incomplete/other",
+    "Moved away, referred on or transferred not in custody"
+  ),
+  "Other", disrsn
+), ]
 
 yrs <- unique(dt[["year"]])
 
@@ -43,9 +47,11 @@ for (i in seq_along(yrs)) {
 }
 
 btwn_dates <-
-  data.frame("index" = seq_along(yrs),
-             "enddate" = dates_vector + lubridate::years(1),
-             "startdate" = dates_vector)
+  data.frame(
+    "index" = seq_along(yrs),
+    "enddate" = dates_vector + lubridate::years(1),
+    "startdate" = dates_vector
+  )
 
 
 # Index `1` means this is for the latest year (2024)
@@ -65,9 +71,11 @@ dt3 <-
   dt3[, .(submoddt = max(submoddt), phbudi_any = sum(phbudi_any)), by = .(client_random_id, n_jy, disrsn)]
 
 
-dt3[, phbudi_any := data.table::fifelse(phbudi_any >= 1,
-                                        "depot_bupe",
-                                        "no_depot_bupe")]
+dt3[, phbudi_any := data.table::fifelse(
+  phbudi_any >= 1,
+  "depot_bupe",
+  "no_depot_bupe"
+)]
 
 
 dt4 <-
@@ -76,10 +84,11 @@ dt4 <-
 
 
 dt5 <-
-    data.table::dcast.data.table(dt4,
-                                 disrsn ~ phbudi_any,
-                                 value.var = "N",
-                                 fill = 0)
+  data.table::dcast.data.table(dt4,
+    disrsn ~ phbudi_any,
+    value.var = "N",
+    fill = 0
+  )
 
 
 

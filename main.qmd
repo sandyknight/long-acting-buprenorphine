@@ -26,53 +26,66 @@ library(ggplot2)
 
 
 ## Unzip file
-## 
+##
 DepotBupeAnalysis::unzip_datafile()
 
 ## Load main table
 main_df <-
-  DepotBupeAnalysis::load_main_data(file_path = file.path("inst",
-                                                          "extdata",
-                                                          "K3anon_FullDataset_for_VfM.csv"))
+  DepotBupeAnalysis::load_main_data(file_path = file.path(
+    "inst",
+    "extdata",
+    "K3anon_FullDataset_for_VfM.csv"
+  ))
 
 
 n_unique_clients <- length(unique(main_df[["client_random_id"]]))
 
 
 main_df <-
-  DepotBupeAnalysis::add_geo_to_main_df(main = main_df,
-                                        geo = DepotBupeAnalysis::get_geo_data())
+  DepotBupeAnalysis::add_geo_to_main_df(
+    main = main_df,
+    geo = DepotBupeAnalysis::get_geo_data()
+  )
 
 ## Load SIR table
 
 
-sir_df <- DepotBupeAnalysis::load_sir_data(file_path = file.path("inst",
-                                                                 "extdata",
-                                                                 "SIR_table_for_VfM_linked.csv"))
+sir_df <- DepotBupeAnalysis::load_sir_data(file_path = file.path(
+  "inst",
+  "extdata",
+  "SIR_table_for_VfM_linked.csv"
+))
 
 
 
 dt <-
   DepotBupeAnalysis::create_final_df(sir_df, main_df)
 
-#assertr::assert(dt, assertr::in_set(0, 1), phbudi_any, phbupren_any)
+# assertr::assert(dt, assertr::in_set(0, 1), phbudi_any, phbupren_any)
 
-#dt[, lapply(.SD, sum), by = lubridate::year(submoddt), .SDcols = c("phbudi_any", "phbupren_any")]
+# dt[, lapply(.SD, sum), by = lubridate::year(submoddt), .SDcols = c("phbudi_any", "phbupren_any")]
 
 dt[, year := lubridate::year(submoddt)]
 
-#dt[, lapply(.SD, sum), by = year, .SDcols = c("phbudi_any", "phbupren_any")]
+# dt[, lapply(.SD, sum), by = year, .SDcols = c("phbudi_any", "phbupren_any")]
 
 dt <- dt[,
-         lapply(.SD,
-                sum),
-         by = .(client_random_id,
-                year,
-                utla23cd,
-                utla23nm,
-                tranche),
-         .SDcols = c("phbudi_any",
-                     "phbupren_any")]
+  lapply(
+    .SD,
+    sum
+  ),
+  by = .(
+    client_random_id,
+    year,
+    utla23cd,
+    utla23nm,
+    tranche
+  ),
+  .SDcols = c(
+    "phbudi_any",
+    "phbupren_any"
+  )
+]
 
 
 dt[, phbudi_any := data.table::fifelse(phbudi_any > 0, 1L, phbudi_any)]
@@ -81,13 +94,13 @@ dt[, phbupren_any := data.table::fifelse(phbupren_any > 0, 1L, phbupren_any)]
 
 dt[, other_ost := data.table::fifelse((phbudi_any == 0 & phbupren_any == 0), 1L, 0L)]
 
-#length(unique(dt[["client_random_id"]])) <= n_unique_clients
+# length(unique(dt[["client_random_id"]])) <= n_unique_clients
 
-#dt[, lapply(.SD, sum), by = year, .SDcols = c("phbudi_any", "phbupren_any")]
+# dt[, lapply(.SD, sum), by = year, .SDcols = c("phbudi_any", "phbupren_any")]
 
 dt[, other_ost := other_ost + phbupren_any]
 
-#assertr::assert(dt, assertr::in_set(0, 1), phbudi_any, other_ost)
+# assertr::assert(dt, assertr::in_set(0, 1), phbudi_any, other_ost)
 
 dt <- dt[, !c("phbupren_any")]
 
@@ -95,8 +108,10 @@ national_dt <-
   DepotBupeAnalysis::calculate_lab_rate(dt = dt, groups = "year")
 
 utla_dt <-
-  DepotBupeAnalysis::calculate_lab_rate(dt = dt,
-                                        groups = c("year", "utla23nm", "utla23cd", "tranche"))
+  DepotBupeAnalysis::calculate_lab_rate(
+    dt = dt,
+    groups = c("year", "utla23nm", "utla23cd", "tranche")
+  )
 
 
 national_summary <-
@@ -110,7 +125,6 @@ tranche_summary <-
 ## National summary
 
 ```{r national_table}
-
 DepotBupeAnalysis::create_summary_table(national_summary) |>
   flextable::set_table_properties(width = 1, layout = "autofit", align = "center")
 ```
@@ -122,21 +136,20 @@ DepotBupeAnalysis::create_summary_table(national_summary) |>
 tranche_summary_table <-
   DepotBupeAnalysis::create_summary_table(tranche_summary)
 
-ft <- 
-tranche_summary_table |> 
-  flextable::bg(i = ~ Tranche == 1, bg = ggplot2::alpha(afcolours::af_colours(n = 1), 0.5)) |> 
-  flextable::bg(i = ~ Tranche == 2, bg = ggplot2::alpha(afcolours::af_colours(n = 2)[2], 0.5)) |> 
-  flextable::bg(i = ~ Tranche ==3, bg = ggplot2::alpha(afcolours::af_colours(n = 3)[3], 0.5)) |>
+ft <-
+  tranche_summary_table |>
+  flextable::bg(i = ~ Tranche == 1, bg = ggplot2::alpha(afcolours::af_colours(n = 1), 0.5)) |>
+  flextable::bg(i = ~ Tranche == 2, bg = ggplot2::alpha(afcolours::af_colours(n = 2)[2], 0.5)) |>
+  flextable::bg(i = ~ Tranche == 3, bg = ggplot2::alpha(afcolours::af_colours(n = 3)[3], 0.5)) |>
   flextable::merge_v(j = 2) |>
   flextable::fontsize(size = 8) |>
   flextable::padding(padding = 0.1) |>
   flextable::height_all(height = 0.2, part = "all") |>
-  flextable::align(align = "center", part = "all")  |>
-  flextable::valign(valign = "top", part = "all")  |>
-  flextable::width(j = 1:10, width = 0.8)  |> # Adjust column widths
-  flextable::set_table_properties(layout = "fixed") 
+  flextable::align(align = "center", part = "all") |>
+  flextable::valign(valign = "top", part = "all") |>
+  flextable::width(j = 1:10, width = 0.8) |> # Adjust column widths
+  flextable::set_table_properties(layout = "fixed")
 officer::ph_with(ft, location = ph_location(left = 1, top = 0.5, width = 8, height = 4))
-
 ```
 
 ## Plot by tranche
@@ -147,16 +160,14 @@ officer::ph_with(ft, location = ph_location(left = 1, top = 0.5, width = 8, heig
 invisible(afcharts::use_afcharts())
 
 p <-
-tranche_summary |> 
+  tranche_summary |>
   ggplot(aes(x = Year, y = `LAB rate`, group = Tranche)) +
   geom_col(aes(fill = Tranche),
-           position = "dodge",
-           colour = "white",
-           width = 0.4
-           ) +
+    position = "dodge",
+    colour = "white",
+    width = 0.4
+  ) +
   scale_y_continuous(labels = scales::percent)
 p
-  
-
 ```
 

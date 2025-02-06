@@ -5,60 +5,66 @@ library(janitor)
 main_dt <- fread("data/K3anon_FullDataset_for_VfM.csv")
 sir_dt <- fread("data/SIR_table_for_VfM_linked.csv")
 
-sir_dt <-
-  sir_dt[-which(duplicated(sir_dt))]
+prepare_sir_data <-
+  function(sir_data, start_year = 2019) {
 
-sum(duplicated(sir_dt))
+    sir_data <-
+      sir_data[-which(duplicated(sir_data))]
 
-sir_dt[, submoddt := lubridate::as_date(submoddt)]
+    sir_data[, submoddt := lubridate::as_date(submoddt)]
 
-sir_dt <- sir_dt[lubridate::year(submoddt) > 2019, ]
+    sir_data <- sir_data[lubridate::year(submoddt) > 2019, ]
+
+    return(sir_data)
+  }
 
 # ----------------Validation ---------------
-sum(duplicated(sir_dt)) == 0
+stopifnot(sum(duplicated(sir_dt)) == 0)
 # ------------------------------------------
 
-main_dt <- main_dt[drug_grp == "Opiate", ]
+prepare_main_data  <-
+  function(main_data) {
+    # Filter to opiate clients
+    main_dt <- main_dt[drug_grp == "Opiate", ]
 
-main_dt[, `:=`(
-  triaged = lubridate::as_date(triaged),
-  disd = lubridate::as_date(disd)
-)]
+    # Convert date columns to compatible data class
+    main_dt[, `:=`(
+      triaged = lubridate::as_date(triaged),
+      disd = lubridate::as_date(disd)
+    )]
 
-# Recode disrsn to have fewer categories
-main_dt[, disrsn := fifelse(
-  is.na(disd), "Retained",
-  fifelse(
-    disrsn %chin% c(
-      "Exit reason inconsistent",
-      "Incomplete/other",
-      "Moved away, referred on or transferred not in custody"
-    ),
-    "Other", disrsn
-  )
-)]
-
-
-yrs <-
-  unique(lubridate::year(unique(sir_dt[["submoddt"]])))
-
-yrs <- rev(sort(yrs))
-
-yrs <- yrs[yrs != min(yrs)]
-
-# Instead of a loop, subtract a sequence of years from the maximum date:
-start_dates <- max(sir_dt$submoddt) - years(seq_along(yrs))
-
-end_dates <- start_dates + lubridate::years(1)
+    # Recode disrsn to have fewer categories
+    main_dt[, disrsn := fifelse(
+      is.na(disd), "Retained",
+      fifelse(
+        disrsn %chin% c(
+          "Exit reason inconsistent",
+          "Incomplete/other",
+          "Moved away, referred on or transferred not in custody"
+        ),
+        "Other", disrsn
+      )
+    )]
+ }
 
 calculate_counts <-
   function(i,
-           startdates = start_dates,
-           enddates = end_dates,
-           SIR_data = sir_dt,
+           sir_data = sir_dt,
            main_data = main_dt) {
+
+    yrs <-
+      unique(lubridate::year(unique(sir_data[["submoddt"]])))
+
+    yrs <- rev(sort(yrs))
+
+    yrs <- yrs[yrs != min(yrs)]
+
+    start_dates <- max(sir_data$submoddt) - years(seq_along(yrs))
+
+    end_dates <- start_dates + lubridate::years(1)
+
     dt_inter <-
-      SIR_data[submoddt %between% c(start_dates[i], end_dates[i])]
+      sir_data[submoddt %between% c(start_dates[i], end_dates[i])]
 
     dt_inter <-
       dt_inter[, .(
@@ -93,52 +99,62 @@ calculate_counts <-
     return(dt)
   }
 
-dt <-
+
+dt_counts <-
   data.table::rbindlist(lapply(X = seq_along(yrs), FUN = calculate_counts))
 
+calculate_rates <-
+  function(counts_dt) {
 
-all_outcomes_totals <-
-  dt[, lapply(.SD, sum), by = year, .SDcols = c("no_depot_bupe", "depot_bupe")]
+    all_outcomes_totals <-
+      counts_dt[, lapply(.SD, sum),
+                by = year,
+                .SDcols = c("no_depot_bupe", "depot_bupe")]
 
-dt <-
-  data.table::merge.data.table(dt,
-    all_outcomes_totals,
-    by = "year",
-    suffixes = c("", "_total")
-  )
-
-dt[, `:=`(
-  depot_rate = depot_bupe / depot_bupe_total,
-  no_depot_rate = no_depot_bupe / no_depot_bupe_total
-)]
-
-
-dt_res <-
-  dt[, .(year, outcome, depot_bupe, depot_rate, no_depot_bupe, no_depot_rate)]
-
-dt_res[outcome == "Died", lapply(.SD, scales::percent),
-  by = .(year, outcome),
-  .SDcols = c("depot_rate", "no_depot_rate")
-]
-
-dt_rates_long <-
-  data.table::melt.data.table(
-    dt_res[
-      outcome == "Died",
-      .(
-        year,
-        outcome,
-        depot_rate,
-        no_depot_rate
+    counts_dt <-
+      data.table::merge.data.table(counts_dt,
+        all_outcomes_totals,
+        by = "year",
+        suffixes = c("", "_total")
       )
-    ],
-    id.vars = c("year", "outcome"),
-    measure.vars = c("depot_rate", "no_depot_rate")
-  )
 
-library(ggplot2)
-afcharts::use_afcharts()
+    counts_dt[, `:=`(
+      depot_rate = depot_bupe / depot_bupe_total,
+      no_depot_rate = no_depot_bupe / no_depot_bupe_total
+    )]
 
-dt_rates_long |>
-  ggplot(aes(x = year, y = value)) +
-  geom_col(aes(fill = variable), position = "dodge")
+    dt_res <-
+      dt[, .(year, outcome, depot_bupe, depot_rate, no_depot_bupe, no_depot_rate)]
+
+    dt_res[outcome == "Died", lapply(.SD, scales::percent),
+      by = .(year, outcome),
+      .SDcols = c("depot_rate", "no_depot_rate")
+    ]
+
+}
+
+plot_rates <-
+  function(rates_dt) {
+
+    dt_rates_long <-
+      data.table::melt.data.table(
+        rates_dt[
+          outcome == "Died",
+          .(
+            year,
+            outcome,
+            depot_rate,
+            no_depot_rate
+          )
+        ],
+        id.vars = c("year", "outcome"),
+        measure.vars = c("depot_rate", "no_depot_rate")
+      )
+
+    afcharts::use_afcharts()
+
+    dt_rates_long |>
+      ggplot(aes(x = year, y = value)) +
+      geom_col(aes(fill = variable), position = "dodge") +
+      scale_y_continuous(labels = scales::percent)
+  }

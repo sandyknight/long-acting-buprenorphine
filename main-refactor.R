@@ -146,32 +146,7 @@ calculate_rr_point_estimate <-
     return(rr)
   }
 
-calculate_rr_CIs <-
-  function(dt, yr, invert = "false") {
 
-    switch(invert,
-      "false" = {
-
-        te <- dt[year == yr, ][disrsn == "Died", .(depot_bupe)]
-        tn <- dt[year == yr, ][disrsn == "Did not die", .(depot_bupe)]
-        ce <- dt[year == yr, ][disrsn == "Died", .(no_depot_bupe)]
-        cn <- dt[year == yr, ][disrsn == "Did not die", .(no_depot_bupe)]},
-      "true" =  {
-        te <- dt[year == yr, ][disrsn == "Died", .(no_depot_bupe)]
-        tn <- dt[year == yr, ][disrsn == "Did not die", .(no_depot_bupe)]
-        ce <- dt[year == yr, ][disrsn == "Died", .(depot_bupe)]
-        cn <- dt[year == yr, ][disrsn == "Did not die", .(depot_bupe)]})
-
-    rr <- (te * (ce + cn)) / (ce * (te + tn))
-
-
-
-    CI_log_rr <- log(rr) + c(-1, 1) * se_log_rr * z_alpha
-
-    rr <- as.numeric(rr)
-
-    return(rr)
-  }
 rr_depot <-
   vapply(X = yrs,
          FUN.VALUE = numeric(1),
@@ -191,26 +166,132 @@ rr_res_dt <-
   data.frame("year" = yrs,
              "mortality_RR_depot" = rr_depot,
              "mortality_RR_no_depot" = rr_no_depot)
+rr_res_dt
+
+# CIs
+calculate_rr_CIs <-
+  function(dt, yr, invert = "false", confidence_level = 0.95) {
+    
+    z_alpha <- qnorm((1 - ((1- confidence_level) / 2)))
+
+    switch(invert,
+      "false" = {
+
+        te <- dt[year == yr, ][disrsn == "Died", .(depot_bupe)]
+        tn <- dt[year == yr, ][disrsn == "Did not die", .(depot_bupe)]
+        ce <- dt[year == yr, ][disrsn == "Died", .(no_depot_bupe)]
+        cn <- dt[year == yr, ][disrsn == "Did not die", .(no_depot_bupe)]},
+      "true" =  {
+        te <- dt[year == yr, ][disrsn == "Died", .(no_depot_bupe)]
+        tn <- dt[year == yr, ][disrsn == "Did not die", .(no_depot_bupe)]
+        ce <- dt[year == yr, ][disrsn == "Died", .(depot_bupe)]
+        cn <- dt[year == yr, ][disrsn == "Did not die", .(depot_bupe)]})
+
+    rr <- (te * (ce + cn)) / (ce * (te + tn))
+    
+    se_log_rr <- sqrt(( tn / (te * (te + tn))) + (cn / (ce * (te + cn))))
+    
+    CI_log_rr_upper <- 
+      log(rr) + se_log_rr * z_alpha
+   
+    CI_log_rr_lower <- 
+      log(rr) - se_log_rr * z_alpha
+    
+    res <-  
+    c(rr,
+      exp(CI_log_rr_upper),
+      exp(CI_log_rr_lower))
+   
+   names(res) <- c("rr", "upper", "lower")
+   
+   res <-   
+     data.frame("year"  = yr,
+                "rr"    = res$rr,
+                "lower" = res$lower,
+                "upper" = res$upper)
+   
+   return(res)
+
+  }
+
+depot_rr <- 
+  lapply(X = yrs,
+         FUN = function(x) calculate_rr_CIs(dt = dt_rr,
+                                            yr = x,
+                                            invert = "false"))
+
+depot_rr <-  data.table::rbindlist(depot_rr)
+
+no_depot_rr <- 
+  lapply(X = yrs,
+         FUN = function(x) calculate_rr_CIs(dt = dt_rr,
+                                            yr = x,
+                                            invert = "true"))
+
+no_depot_rr <-  data.table::rbindlist(no_depot_rr)
+
+
+library(ggplot2)
+
+
+
+dt_res
+
+chkfile <-
+  readxl::read_xlsx("Copy of Depot buprenorphine SR output v5 jk working_.xlsx",
+                  sheet = "Table 1",
+                  range = "A5:V16")
+
+chkfile <- data.table::as.data.table(chkfile)
+
+chkfile <- chkfile[!grepl("journey", `LAB status`), .(`Year`, `LAB status`, InTx, Exits_Died, Exits_SC)]
+
+chkfile[, `:=`(mortality_rate = Exits_Died / InTx, sc_rate = Exits_SC / InTx)]
+
+chkfile[, InTx := NULL]
+
+chkfile <- data.table::melt.data.table(chkfile, measure.vars = data.table::patterns("Exits|rate", cols = names(chkfile)))
+
+
+
+data.table::dcast.data.table(chkfile, Year + variable ~ `LAB status`)
+
+chkfile
 
 
 
 
-## library(ggplot2)
 
 
-## dtres_long <-
-##   data.table::melt(dt_res[, .(year, disrsn, depot_bupe, no_depot_bupe)],
-##                    measure.vars = c("depot_bupe", "no_depot_bupe"))
+dtres_long <-
+ data.table::melt(dt_res[, .(year, disrsn, depot_bupe, no_depot_bupe)],
+                  measure.vars = c("depot_bupe", "no_depot_bupe"))
 
-## dtres_long_rate <-
-##   data.table::melt(dt_res[, .(year, disrsn, depot_rate, no_depot_rate)],
-##                    measure.vars = c("depot_rate", "no_depot_rate"))
+dtres_long_rate <-
+ data.table::melt(dt_res[, .(year, disrsn, depot_rate, no_depot_rate)],
+                  measure.vars = c("depot_rate", "no_depot_rate"))
+
+library(flextable)
+
+data.table::setorder(dt_res, -year, -no_depot_bupe)
+
+dt_res[, .(year = forcats::as_factor(year),
+           disrsn,
+           depot_bupe,
+           depot_rate = scales::percent(depot_rate, accuracy = 0.1),
+           no_depot_bupe,
+           no_depot_rate =  scales::percent(no_depot_rate, accuracy = 0.1))] |> 
+  flextable() |> 
+  flextable::merge_v(j = 1) |> 
+  flextable::theme_box()
+  
 
 
 
+afcharts::use_afcharts()
 
-## afcharts::use_afcharts()
+dtres_long_rate[disrsn == "Died"] |>
+ ggplot(aes(x = year, y = value)) +
+ geom_col(aes(fill = variable), position = "dodge")
 
-## dtres_long_rate[disrsn == "Died"] |>
-##   ggplot(aes(x = year, y = value)) +
-##   geom_col(aes(fill = variable), position = "dodge")
+

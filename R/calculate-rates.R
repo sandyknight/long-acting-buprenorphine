@@ -20,11 +20,13 @@ calculate_rates <-
     )]
 
     dt_res <-
-      dt[, .(year, outcome, depot_bupe, depot_rate, no_depot_bupe, no_depot_rate)]
+      counts_dt[, .(year, outcome, depot_bupe, depot_rate, no_depot_bupe, no_depot_rate)]
 
     dt_res[outcome == "Died", lapply(.SD, scales::percent),
       by = .(year, outcome),
       .SDcols = c("depot_rate", "no_depot_rate")
     ]
+    data.table::setnames(dt_res, new = function(x) gsub("bupe", "count", x))
+    return(dt_res)
 
 }

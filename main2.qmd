@@ -1,0 +1,309 @@
+---
+title: "Long-acting buprenorphine"
+author: "Your Name"
+date: "2025-01-23"
+format:
+  pptx:
+    table-width: 80%
+    table-height: 70%
+    slide-level: 2
+    reference-doc: template.pptx
+execute:
+  cache: false 
+  echo: false
+  warning: false
+  message: false
+---
+
+
+```{r setup}
+#| include: false
+library(afcharts)
+library(flextable)
+library(ggplot2)
+library(data.table)
+library(lubridate)
+
+main_dt <- data.table::fread("data/K3anon_FullDataset_for_VfM.csv")
+
+sir_dt <- data.table::fread("data/SIR_table_for_VfM_linked.csv")
+
+invisible(lapply(list.files("R", pattern = "\\.[Rr]$", full.names = TRUE), source))
+
+```
+```{r outcomes-calculations-oct}
+main_dt <-
+  prepare_main_data(main_data = main_dt)
+
+sir_dt <-
+  prepare_sir_data(sir_data = sir_dt)
+
+
+counts_dt <-
+  calculate_counts(sir_data = sir_dt,
+                   main_data = main_dt,
+                   end_date = "2024-10-01")
+
+rates_dt <-
+  calculate_rates(counts_data = counts_dt)
+
+
+mx_rr_t1 <-
+  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
+                        yr = unique(counts_dt[["year"]]),
+                        MoreArgs = list(dt = counts_dt),
+                        SIMPLIFY = FALSE))
+
+mx_rr_t1[, outcome := "Mortality"][, intervention := "LAB"]
+
+mx_rr_t0 <-
+  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
+                        yr = unique(counts_dt[["year"]]),
+                        MoreArgs = list(dt = counts_dt, invert = TRUE),
+                        SIMPLIFY = FALSE))
+
+mx_rr_t0[, outcome := "Mortality"][, intervention := "Other OST"]
+
+sc_rr_t1 <-
+  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
+                        yr = unique(counts_dt[["year"]]),
+                        MoreArgs = list(dt = counts_dt,
+                                        event = "Successful completion"),
+                        SIMPLIFY = FALSE))
+
+sc_rr_t1[, outcome := "Successful completion"][, intervention := "LAB"]
+
+sc_rr_t0 <-
+  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
+                        yr = unique(counts_dt[["year"]]),
+                        MoreArgs = list(dt = counts_dt,
+                                        invert = TRUE,
+                                        event = "Successful completion"),
+                        SIMPLIFY = FALSE))
+
+sc_rr_t0[, outcome := "Successful completion"][, intervention := "Other OST"]
+
+relative_risks <- data.table::rbindlist(l = list(mx_rr_t1, mx_rr_t0, sc_rr_t1, sc_rr_t0))
+
+data.table::fwrite(relative_risks, "lab-relative-risks.csv")
+
+```
+
+## Comparative outcomes
+### From October to October from 2020 to 2024
+
+## Summary results
+```{r result-table-oct}
+
+data.table::setorder(rates_dt, outcome, year)
+
+ft <-
+  rates_dt |>
+  dplyr::mutate(year = forcats::as_factor(year)) |>
+  dplyr::mutate(depot_rate = scales::percent(depot_rate, accuracy = 0.1)) |>
+  dplyr::mutate(no_depot_rate = scales::percent(no_depot_rate, accuracy = 0.1)) |>
+  flextable() |>
+  flextable::set_header_labels(values = c("Year",
+                       "Outcome",
+                       "LAB (n)",
+                       "LAB (%)",
+                       "No LAB (n)",
+                       "No LAB (%)")) |>
+  flextable::colformat_int(j = 1, big.mark = "") |>
+  flextable::fontsize(size = 8) |>
+  flextable::padding(padding.left = 0.5,
+                      padding.right = 0.1,
+                      padding.top = 0.1,
+                      padding.bottom = 0.1,
+                      part = "all") |>
+  flextable::height_all(height = 0.2, part = "all") |>
+  flextable::align(align = "left", part = "all") |>
+  flextable::valign(valign = "center", part = "all") |>
+  flextable::autofit() 
+
+ft
+```
+## Mortality rates
+```{r mx-rate}
+plot_rates(rates_dt, event = "Died")
+```
+## Relative risk of mortality
+
+- Relative risk of mortality for those receiving long-acting buprenorphine
+- Mean relative mortality risk over four years: `{r} round(as.numeric(mx_rr_t1[, mean(rr)]), 2)`
+- Plot shows 95% confidence intervals
+```{r mx-rr-t1}
+plot_rr(mx_rr_t1, n = 3)
+```
+
+## Relative risk of mortality
+
+- Relative risk of mortality for those *not* receiving long-acting buprenorphine
+- Mean relative mortality risk over four years: `{r} round(as.numeric(mx_rr_t0[, mean(rr)]), 2)`
+- Plot shows 95% confidence intervals
+```{r mx-rr-t0}
+plot_rr(mx_rr_t0, n = 3)
+```
+
+## Succesful completion rates
+
+```{r sc-rate}
+plot_rates(rates_dt, "Successful completion")
+```
+## Relative risks: successful completion
+
+- Relative 'risk' of successful completion for those receiving long-acting buprenorphine
+- Mean relative risk over four years: `{r} round(as.numeric(sc_rr_t1[, mean(rr)]), 2)`
+```{r sc-rr-t1}
+plot_rr(sc_rr_t1, n = 3)
+```
+
+## Relative risks: successful completion
+
+- Relative 'risk' of successful completion for those *not* receiving long-acting buprenorphine
+- Mean relative risk over four years: `{r} round(as.numeric(sc_rr_t0[, mean(rr)]), 2)`
+```{r sc-rr-t0}
+plot_rr(sc_rr_t0, n = 3)
+```
+
+```{r outcomes-calculations-fy}
+rm(list = ls())
+
+main_dt <- data.table::fread("data/K3anon_FullDataset_for_VfM.csv")
+
+sir_dt <- data.table::fread("data/SIR_table_for_VfM_linked.csv")
+
+invisible(lapply(list.files("R", pattern = "\\.[Rr]$", full.names = TRUE), source))
+
+main_dt <-
+  prepare_main_data(main_data = main_dt)
+
+sir_dt <-
+  prepare_sir_data(sir_data = sir_dt)
+
+
+counts_dt <-
+  calculate_counts(sir_data = sir_dt,
+                   main_data = main_dt,
+                   end_date = "2024-04-01")
+
+rates_dt <-
+  calculate_rates(counts_data = counts_dt)
+
+
+mx_rr_t1 <-
+  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
+                        yr = unique(counts_dt[["year"]]),
+                        MoreArgs = list(dt = counts_dt),
+                        SIMPLIFY = FALSE))
+
+mx_rr_t1[, outcome := "Mortality"][, intervention := "LAB"]
+
+mx_rr_t0 <-
+  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
+                        yr = unique(counts_dt[["year"]]),
+                        MoreArgs = list(dt = counts_dt, invert = TRUE),
+                        SIMPLIFY = FALSE))
+
+mx_rr_t0[, outcome := "Mortality"][, intervention := "Other OST"]
+
+sc_rr_t1 <-
+  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
+                        yr = unique(counts_dt[["year"]]),
+                        MoreArgs = list(dt = counts_dt,
+                                        event = "Successful completion"),
+                        SIMPLIFY = FALSE))
+
+sc_rr_t1[, outcome := "Successful completion"][, intervention := "LAB"]
+
+sc_rr_t0 <-
+  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
+                        yr = unique(counts_dt[["year"]]),
+                        MoreArgs = list(dt = counts_dt,
+                                        invert = TRUE,
+                                        event = "Successful completion"),
+                        SIMPLIFY = FALSE))
+
+sc_rr_t0[, outcome := "Successful completion"][, intervention := "Other OST"]
+
+relative_risks <- data.table::rbindlist(l = list(mx_rr_t1, mx_rr_t0, sc_rr_t1, sc_rr_t0))
+
+data.table::fwrite(relative_risks, "lab-relative-risks-fy.csv")
+
+```
+## Comparative outcomes
+### Financial year 2020/21 to 2023/24 
+
+## Summary results
+```{r result-table-fy}
+
+data.table::setorder(rates_dt, outcome, year)
+
+ft <-
+  rates_dt |>
+  dplyr::mutate(year = forcats::as_factor(year)) |>
+  dplyr::mutate(depot_rate = scales::percent(depot_rate, accuracy = 0.1)) |>
+  dplyr::mutate(no_depot_rate = scales::percent(no_depot_rate, accuracy = 0.1)) |>
+  flextable() |>
+  flextable::set_header_labels(values = c("Year",
+                       "Outcome",
+                       "LAB (n)",
+                       "LAB (%)",
+                       "No LAB (n)",
+                       "No LAB (%)")) |>
+  flextable::colformat_int(j = 1, big.mark = "") |>
+  flextable::fontsize(size = 8) |>
+  flextable::padding(padding.left = 0.5,
+                      padding.right = 0.1,
+                      padding.top = 0.1,
+                      padding.bottom = 0.1,
+                      part = "all") |>
+  flextable::height_all(height = 0.2, part = "all") |>
+  flextable::align(align = "left", part = "all") |>
+  flextable::valign(valign = "center", part = "all") |>
+  flextable::autofit() 
+
+ft
+```
+## Mortality rates
+```{r mx-rate-fy}
+plot_rates(rates_dt, event = "Died")
+```
+## Relative risk of mortality
+
+- Relative risk of mortality for those receiving long-acting buprenorphine
+- Mean relative mortality risk over four years: `{r} round(as.numeric(mx_rr_t1[, mean(rr)]), 2)`
+- Plot shows 95% confidence intervals
+```{r mx-rr-t1-fy}
+plot_rr(mx_rr_t1, n = 2)
+```
+
+## Relative risk of mortality
+
+- Relative risk of mortality for those *not* receiving long-acting buprenorphine
+- Mean relative mortality risk over four years: `{r} round(as.numeric(mx_rr_t0[, mean(rr)]), 2)`
+- Plot shows 95% confidence intervals
+```{r mx-rr-t0-fy}
+plot_rr(mx_rr_t0, n = 2)
+```
+
+## Succesful completion rates
+
+```{r sc-rate-fy}
+plot_rates(rates_dt, "Successful completion")
+```
+## Relative risks: successful completion
+
+- Relative 'risk' of successful completion for those receiving long-acting buprenorphine
+- Mean relative risk over four years: `{r} round(as.numeric(sc_rr_t1[, mean(rr)]), 2)`
+```{r sc-rr-t1-fy}
+plot_rr(sc_rr_t1, n = 2)
+```
+
+## Relative risks: successful completion
+
+- Relative 'risk' of successful completion for those *not* receiving long-acting buprenorphine
+- Mean relative risk over four years: `{r} round(as.numeric(sc_rr_t0[, mean(rr)]), 2)`
+```{r sc-rr-t0-fy}
+plot_rr(sc_rr_t0, n = 2)
+```

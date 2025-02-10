@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "templates/DHSC_HTML_example.html",
+    "href": "templates/DHSC_HTML_example.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "This template is an example of how to write a report in the DHSC style.\nYou can edit this file and press the Render button to produce a HTML document.\nWhen using the DHSC template, use one hash symbol for headings and two hash symbols for subheadings and so on. Up to five levels of heading can be used (five hash symbols).\nYou can learn more about controlling the appearance of HTML output on the quarto website."
+  },
+  {
+    "objectID": "templates/DHSC_HTML_example.html#a-subheading",
+    "href": "templates/DHSC_HTML_example.html#a-subheading",
+    "title": "Untitled",
+    "section": "A subheading",
+    "text": "A subheading\nText under a subheading…"
+  },
+  {
+    "objectID": "templates/DHSC_HTML_example.html#a-subheading-1",
+    "href": "templates/DHSC_HTML_example.html#a-subheading-1",
+    "title": "Untitled",
+    "section": "A Subheading",
+    "text": "A Subheading\nDifferent text here…\n\nThird level subheading\n\nFourth level subheading\nSome text here…\n\nFifth level subheading"
+  },
+  {
+    "objectID": "templates/DHSC_HTML_example.html#another-subheading",
+    "href": "templates/DHSC_HTML_example.html#another-subheading",
+    "title": "Untitled",
+    "section": "Another Subheading",
+    "text": "Another Subheading\nMore text here…"
+  },
+  {
+    "objectID": "templates/OHID_HTML_example.html",
+    "href": "templates/OHID_HTML_example.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "This template is an example of how to write a report in the OHID style.\nYou can edit this file and press the Render button to produce a HTML document.\nWhen using the OHID template, use one hash symbol for headings and two hash symbols for subheadings and so on. Up to five levels of heading can be used (five hash symbols).\nYou can learn more about controlling the appearance of HTML output on the quarto website."
+  },
+  {
+    "objectID": "templates/OHID_HTML_example.html#a-subheading",
+    "href": "templates/OHID_HTML_example.html#a-subheading",
+    "title": "Untitled",
+    "section": "A subheading",
+    "text": "A subheading\nText under a subheading…"
+  },
+  {
+    "objectID": "templates/OHID_HTML_example.html#a-subheading-1",
+    "href": "templates/OHID_HTML_example.html#a-subheading-1",
+    "title": "Untitled",
+    "section": "A Subheading",
+    "text": "A Subheading\nDifferent text here…\n\nThird level subheading\n\nFourth level subheading\nSome text here…\n\nFifth level subheading"
+  },
+  {
+    "objectID": "templates/OHID_HTML_example.html#another-subheading",
+    "href": "templates/OHID_HTML_example.html#another-subheading",
+    "title": "Untitled",
+    "section": "Another Subheading",
+    "text": "Another Subheading\nMore text here…"
+  }
+]

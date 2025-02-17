@@ -1,0 +1,177 @@
+[
+  {
+    "objectID": "templates/DHSC_HTML_example.html",
+    "href": "templates/DHSC_HTML_example.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "This template is an example of how to write a report in the DHSC style.\nYou can edit this file and press the Render button to produce a HTML document.\nWhen using the DHSC template, use one hash symbol for headings and two hash symbols for subheadings and so on. Up to five levels of heading can be used (five hash symbols).\nYou can learn more about controlling the appearance of HTML output on the quarto website."
+  },
+  {
+    "objectID": "templates/DHSC_HTML_example.html#a-subheading",
+    "href": "templates/DHSC_HTML_example.html#a-subheading",
+    "title": "Untitled",
+    "section": "A subheading",
+    "text": "A subheading\nText under a subheading…"
+  },
+  {
+    "objectID": "templates/DHSC_HTML_example.html#a-subheading-1",
+    "href": "templates/DHSC_HTML_example.html#a-subheading-1",
+    "title": "Untitled",
+    "section": "A Subheading",
+    "text": "A Subheading\nDifferent text here…\n\nThird level subheading\n\nFourth level subheading\nSome text here…\n\nFifth level subheading"
+  },
+  {
+    "objectID": "templates/DHSC_HTML_example.html#another-subheading",
+    "href": "templates/DHSC_HTML_example.html#another-subheading",
+    "title": "Untitled",
+    "section": "Another Subheading",
+    "text": "Another Subheading\nMore text here…"
+  },
+  {
+    "objectID": "templates/OHID_HTML_example.html",
+    "href": "templates/OHID_HTML_example.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "This template is an example of how to write a report in the OHID style.\nYou can edit this file and press the Render button to produce a HTML document.\nWhen using the OHID template, use one hash symbol for headings and two hash symbols for subheadings and so on. Up to five levels of heading can be used (five hash symbols).\nYou can learn more about controlling the appearance of HTML output on the quarto website."
+  },
+  {
+    "objectID": "templates/OHID_HTML_example.html#a-subheading",
+    "href": "templates/OHID_HTML_example.html#a-subheading",
+    "title": "Untitled",
+    "section": "A subheading",
+    "text": "A subheading\nText under a subheading…"
+  },
+  {
+    "objectID": "templates/OHID_HTML_example.html#a-subheading-1",
+    "href": "templates/OHID_HTML_example.html#a-subheading-1",
+    "title": "Untitled",
+    "section": "A Subheading",
+    "text": "A Subheading\nDifferent text here…\n\nThird level subheading\n\nFourth level subheading\nSome text here…\n\nFifth level subheading"
+  },
+  {
+    "objectID": "templates/OHID_HTML_example.html#another-subheading",
+    "href": "templates/OHID_HTML_example.html#another-subheading",
+    "title": "Untitled",
+    "section": "Another Subheading",
+    "text": "Another Subheading\nMore text here…"
+  },
+  {
+    "objectID": "main2.html",
+    "href": "main2.html",
+    "title": "",
+    "section": "",
+    "text": "title: “Long-acting buprenorphine” author: “Your Name” date: “2025-01-23” format: pptx: table-width: 80% table-height: 70% slide-level: 2 reference-doc: template.pptx execute: cache: false echo: false warning: false message: false\nmain_dt &lt;-\n  prepare_main_data(main_data = main_dt)\n\nsir_dt &lt;-\n  prepare_sir_data(sir_data = sir_dt)\n\n\ncounts_dt &lt;-\n  calculate_counts(\n    sir_data = sir_dt,\n    main_data = main_dt,\n    end_date = \"2024-10-01\"\n  )\n\nrates_dt &lt;-\n  calculate_rates(counts_data = counts_dt)\n\n\nmx_rr_t1 &lt;-\n  data.table::rbindlist(mapply(\n    FUN = calculate_rr_CIs,\n    yr = unique(counts_dt[[\"year\"]]),\n    MoreArgs = list(dt = counts_dt),\n    SIMPLIFY = FALSE\n  ))\n\nmx_rr_t1[, outcome := \"Mortality\"][, intervention := \"LAB\"]\n\nmx_rr_t0 &lt;-\n  data.table::rbindlist(mapply(\n    FUN = calculate_rr_CIs,\n    yr = unique(counts_dt[[\"year\"]]),\n    MoreArgs = list(dt = counts_dt, invert = TRUE),\n    SIMPLIFY = FALSE\n  ))\n\nmx_rr_t0[, outcome := \"Mortality\"][, intervention := \"Other OST\"]\n\nsc_rr_t1 &lt;-\n  data.table::rbindlist(mapply(\n    FUN = calculate_rr_CIs,\n    yr = unique(counts_dt[[\"year\"]]),\n    MoreArgs = list(\n      dt = counts_dt,\n      event = \"Successful completion\"\n    ),\n    SIMPLIFY = FALSE\n  ))\n\nsc_rr_t1[, outcome := \"Successful completion\"][, intervention := \"LAB\"]\n\nsc_rr_t0 &lt;-\n  data.table::rbindlist(mapply(\n    FUN = calculate_rr_CIs,\n    yr = unique(counts_dt[[\"year\"]]),\n    MoreArgs = list(\n      dt = counts_dt,\n      invert = TRUE,\n      event = \"Successful completion\"\n    ),\n    SIMPLIFY = FALSE\n  ))\n\nsc_rr_t0[, outcome := \"Successful completion\"][, intervention := \"Other OST\"]\n\nrelative_risks &lt;- data.table::rbindlist(l = list(mx_rr_t1, mx_rr_t0, sc_rr_t1, sc_rr_t0))\n\ndata.table::fwrite(relative_risks, \"lab-relative-risks.csv\")"
+  },
+  {
+    "objectID": "main2.html#comparative-outcomes",
+    "href": "main2.html#comparative-outcomes",
+    "title": "",
+    "section": "Comparative outcomes",
+    "text": "Comparative outcomes\n\nFrom October to October from 2020 to 2024"
+  },
+  {
+    "objectID": "main2.html#summary-results",
+    "href": "main2.html#summary-results",
+    "title": "",
+    "section": "Summary results",
+    "text": "Summary results\n\ndata.table::setorder(rates_dt, outcome, year)\n\nft &lt;-\n  rates_dt |&gt;\n  dplyr::mutate(year = forcats::as_factor(year)) |&gt;\n  dplyr::mutate(depot_rate = scales::percent(depot_rate, accuracy = 0.1)) |&gt;\n  dplyr::mutate(no_depot_rate = scales::percent(no_depot_rate, accuracy = 0.1)) |&gt;\n  flextable() |&gt;\n  flextable::set_header_labels(values = c(\n    \"Year\",\n    \"Outcome\",\n    \"LAB (n)\",\n    \"LAB (%)\",\n    \"No LAB (n)\",\n    \"No LAB (%)\"\n  )) |&gt;\n  flextable::colformat_int(j = 1, big.mark = \"\") |&gt;\n  flextable::fontsize(size = 8) |&gt;\n  flextable::padding(\n    padding.left = 0.5,\n    padding.right = 0.1,\n    padding.top = 0.1,\n    padding.bottom = 0.1,\n    part = \"all\"\n  ) |&gt;\n  flextable::height_all(height = 0.2, part = \"all\") |&gt;\n  flextable::align(align = \"left\", part = \"all\") |&gt;\n  flextable::valign(valign = \"center\", part = \"all\") |&gt;\n  flextable::autofit()\n\nft\n\nYearOutcomeLAB (n)LAB (%)No LAB (n)No LAB (%)2021Died260.5%2,4941.9%2022Died240.9%2,6672.3%2023Died171.5%2,5982.5%2024Died41.2%1,3591.7%2021Other57512.1%19,84015.4%2022Other49717.7%22,53519.4%2023Other20618.7%22,66221.6%2024Other4212.4%12,42515.7%2021Prison or transferred in custody2805.9%8,7526.8%2022Prison or transferred in custody2057.3%8,2157.1%2023Prison or transferred in custody736.6%6,8376.5%2024Prison or transferred in custody205.9%3,6614.6%2021Retained3,24268.1%89,74969.8%2022Retained1,64658.5%74,32563.9%2023Retained64058.2%64,21961.3%2024Retained23368.7%56,88071.8%2021Successful completion63713.4%7,6846.0%2022Successful completion44315.7%8,5077.3%2023Successful completion16314.8%8,3938.0%2024Successful completion4011.8%4,9476.2%"
+  },
+  {
+    "objectID": "main2.html#mortality-rates",
+    "href": "main2.html#mortality-rates",
+    "title": "",
+    "section": "Mortality rates",
+    "text": "Mortality rates\n\nplot_rates(rates_dt, event = \"Died\")\n\nℹ Default ggplot2 theme set to `theme_af`.\n\n\nℹ Default colours set.\n\n\nℹ Default geom aesthetics set.\n\n\nℹ Using `main2` palette as only two colours are required."
+  },
+  {
+    "objectID": "main2.html#relative-risk-of-mortality",
+    "href": "main2.html#relative-risk-of-mortality",
+    "title": "",
+    "section": "Relative risk of mortality",
+    "text": "Relative risk of mortality\n\nRelative risk of mortality for those receiving long-acting buprenorphine\nMean relative mortality risk over four years: 0.49\nPlot shows 95% confidence intervals\n\n\nplot_rr(mx_rr_t1, n = 3)"
+  },
+  {
+    "objectID": "main2.html#relative-risk-of-mortality-1",
+    "href": "main2.html#relative-risk-of-mortality-1",
+    "title": "",
+    "section": "Relative risk of mortality",
+    "text": "Relative risk of mortality\n\nRelative risk of mortality for those not receiving long-acting buprenorphine\nMean relative mortality risk over four years: 2.33\nPlot shows 95% confidence intervals\n\n\nplot_rr(mx_rr_t0, n = 3)"
+  },
+  {
+    "objectID": "main2.html#succesful-completion-rates",
+    "href": "main2.html#succesful-completion-rates",
+    "title": "",
+    "section": "Succesful completion rates",
+    "text": "Succesful completion rates\n\nplot_rates(rates_dt, \"Successful completion\")\n\nℹ Default ggplot2 theme set to `theme_af`.\n\n\nℹ Default colours set.\n\n\nℹ Default geom aesthetics set.\n\n\nℹ Using `main2` palette as only two colours are required."
+  },
+  {
+    "objectID": "main2.html#relative-risks-successful-completion",
+    "href": "main2.html#relative-risks-successful-completion",
+    "title": "",
+    "section": "Relative risks: successful completion",
+    "text": "Relative risks: successful completion\n\nRelative ‘risk’ of successful completion for those receiving long-acting buprenorphine\nMean relative risk over four years: 2.03\n\n\nplot_rr(sc_rr_t1, n = 3)"
+  },
+  {
+    "objectID": "main2.html#relative-risks-successful-completion-1",
+    "href": "main2.html#relative-risks-successful-completion-1",
+    "title": "",
+    "section": "Relative risks: successful completion",
+    "text": "Relative risks: successful completion\n\nRelative ‘risk’ of successful completion for those not receiving long-acting buprenorphine\nMean relative risk over four years: 0.5\n\n\nplot_rr(sc_rr_t0, n = 3)\n\n\n\n\n\n\n\n\n\nrm(list = ls())\n\nmain_dt &lt;- data.table::fread(\"data/K3anon_FullDataset_for_VfM.csv\")\n\nsir_dt &lt;- data.table::fread(\"data/SIR_table_for_VfM_linked.csv\")\n\ninvisible(lapply(list.files(\"R\", pattern = \"\\\\.[Rr]$\", full.names = TRUE), source))\n\nmain_dt &lt;-\n  prepare_main_data(main_data = main_dt)\n\nsir_dt &lt;-\n  prepare_sir_data(sir_data = sir_dt)\n\n\ncounts_dt &lt;-\n  calculate_counts(\n    sir_data = sir_dt,\n    main_data = main_dt,\n    end_date = \"2024-04-01\"\n  )\n\nrates_dt &lt;-\n  calculate_rates(counts_data = counts_dt)\n\n\nmx_rr_t1 &lt;-\n  data.table::rbindlist(mapply(\n    FUN = calculate_rr_CIs,\n    yr = unique(counts_dt[[\"year\"]]),\n    MoreArgs = list(dt = counts_dt),\n    SIMPLIFY = FALSE\n  ))\n\nmx_rr_t1[, outcome := \"Mortality\"][, intervention := \"LAB\"]\n\nmx_rr_t0 &lt;-\n  data.table::rbindlist(mapply(\n    FUN = calculate_rr_CIs,\n    yr = unique(counts_dt[[\"year\"]]),\n    MoreArgs = list(dt = counts_dt, invert = TRUE),\n    SIMPLIFY = FALSE\n  ))\n\nmx_rr_t0[, outcome := \"Mortality\"][, intervention := \"Other OST\"]\n\nsc_rr_t1 &lt;-\n  data.table::rbindlist(mapply(\n    FUN = calculate_rr_CIs,\n    yr = unique(counts_dt[[\"year\"]]),\n    MoreArgs = list(\n      dt = counts_dt,\n      event = \"Successful completion\"\n    ),\n    SIMPLIFY = FALSE\n  ))\n\nsc_rr_t1[, outcome := \"Successful completion\"][, intervention := \"LAB\"]\n\nsc_rr_t0 &lt;-\n  data.table::rbindlist(mapply(\n    FUN = calculate_rr_CIs,\n    yr = unique(counts_dt[[\"year\"]]),\n    MoreArgs = list(\n      dt = counts_dt,\n      invert = TRUE,\n      event = \"Successful completion\"\n    ),\n    SIMPLIFY = FALSE\n  ))\n\nsc_rr_t0[, outcome := \"Successful completion\"][, intervention := \"Other OST\"]\n\nrelative_risks &lt;- data.table::rbindlist(l = list(mx_rr_t1, mx_rr_t0, sc_rr_t1, sc_rr_t0))\n\ndata.table::fwrite(relative_risks, \"lab-relative-risks-fy.csv\")"
+  },
+  {
+    "objectID": "main2.html#comparative-outcomes-1",
+    "href": "main2.html#comparative-outcomes-1",
+    "title": "",
+    "section": "Comparative outcomes",
+    "text": "Comparative outcomes\n\nFinancial year 2020/21 to 2023/24"
+  },
+  {
+    "objectID": "main2.html#summary-results-1",
+    "href": "main2.html#summary-results-1",
+    "title": "",
+    "section": "Summary results",
+    "text": "Summary results\n\ndata.table::setorder(rates_dt, outcome, year)\n\nft &lt;-\n  rates_dt |&gt;\n  dplyr::mutate(year = forcats::as_factor(year)) |&gt;\n  dplyr::mutate(depot_rate = scales::percent(depot_rate, accuracy = 0.1)) |&gt;\n  dplyr::mutate(no_depot_rate = scales::percent(no_depot_rate, accuracy = 0.1)) |&gt;\n  flextable() |&gt;\n  flextable::set_header_labels(values = c(\n    \"Year\",\n    \"Outcome\",\n    \"LAB (n)\",\n    \"LAB (%)\",\n    \"No LAB (n)\",\n    \"No LAB (%)\"\n  )) |&gt;\n  flextable::colformat_int(j = 1, big.mark = \"\") |&gt;\n  flextable::fontsize(size = 8) |&gt;\n  flextable::padding(\n    padding.left = 0.5,\n    padding.right = 0.1,\n    padding.top = 0.1,\n    padding.bottom = 0.1,\n    part = \"all\"\n  ) |&gt;\n  flextable::height_all(height = 0.2, part = \"all\") |&gt;\n  flextable::align(align = \"left\", part = \"all\") |&gt;\n  flextable::valign(valign = \"center\", part = \"all\") |&gt;\n  flextable::autofit()\n\nft\n\nYearOutcomeLAB (n)LAB (%)No LAB (n)No LAB (%)2021Died210.6%2,6162.1%2022Died281.5%2,7302.5%2023Died30.5%2,5522.5%2024Died2210.4%2021Other59916.0%21,82017.6%2022Other36118.8%22,74520.8%2023Other9316.8%22,33422.2%2024Other91,6142.8%2021Prison or transferred in custody2486.6%9,0697.3%2022Prison or transferred in custody1357.0%7,3216.7%2023Prison or transferred in custody376.7%6,6526.6%2024Prison or transferred in custody25220.9%2021Retained2,32362.1%81,70366.1%2022Retained1,07055.7%68,40562.4%2023Retained33159.7%60,49660.0%2024Retained14953,97694.6%2021Successful completion54714.6%8,4246.8%2022Successful completion32717.0%8,3697.6%2023Successful completion9016.2%8,7458.7%2024Successful completion37331.3%"
+  },
+  {
+    "objectID": "main2.html#mortality-rates-1",
+    "href": "main2.html#mortality-rates-1",
+    "title": "",
+    "section": "Mortality rates",
+    "text": "Mortality rates\n\nplot_rates(rates_dt, event = \"Died\")\n\nℹ Default ggplot2 theme set to `theme_af`.\n\n\nℹ Default colours set.\n\n\nℹ Default geom aesthetics set.\n\n\nℹ Using `main2` palette as only two colours are required.\n\n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_col()`)."
+  },
+  {
+    "objectID": "main2.html#relative-risk-of-mortality-2",
+    "href": "main2.html#relative-risk-of-mortality-2",
+    "title": "",
+    "section": "Relative risk of mortality",
+    "text": "Relative risk of mortality\n\nRelative risk of mortality for those receiving long-acting buprenorphine\nMean relative mortality risk over four years: NA\nPlot shows 95% confidence intervals\n\n\nplot_rr(mx_rr_t1, n = 2)\n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "main2.html#relative-risk-of-mortality-3",
+    "href": "main2.html#relative-risk-of-mortality-3",
+    "title": "",
+    "section": "Relative risk of mortality",
+    "text": "Relative risk of mortality\n\nRelative risk of mortality for those not receiving long-acting buprenorphine\nMean relative mortality risk over four years: NA\nPlot shows 95% confidence intervals\n\n\nplot_rr(mx_rr_t0, n = 2)\n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "main2.html#succesful-completion-rates-1",
+    "href": "main2.html#succesful-completion-rates-1",
+    "title": "",
+    "section": "Succesful completion rates",
+    "text": "Succesful completion rates\n\nplot_rates(rates_dt, \"Successful completion\")\n\nℹ Default ggplot2 theme set to `theme_af`.\n\n\nℹ Default colours set.\n\n\nℹ Default geom aesthetics set.\n\n\nℹ Using `main2` palette as only two colours are required.\n\n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_col()`)."
+  },
+  {
+    "objectID": "main2.html#relative-risks-successful-completion-2",
+    "href": "main2.html#relative-risks-successful-completion-2",
+    "title": "",
+    "section": "Relative risks: successful completion",
+    "text": "Relative risks: successful completion\n\nRelative ‘risk’ of successful completion for those receiving long-acting buprenorphine\nMean relative risk over four years: NA\n\n\nplot_rr(sc_rr_t1, n = 2)\n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "main2.html#relative-risks-successful-completion-3",
+    "href": "main2.html#relative-risks-successful-completion-3",
+    "title": "",
+    "section": "Relative risks: successful completion",
+    "text": "Relative risks: successful completion\n\nRelative ‘risk’ of successful completion for those not receiving long-acting buprenorphine\nMean relative risk over four years: NA\n\n\nplot_rr(sc_rr_t0, n = 2)\n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_point()`)."
+  }
+]

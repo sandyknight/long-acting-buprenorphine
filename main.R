@@ -17,43 +17,53 @@ sir_dt <-
 
 
 counts_dt <-
-  calculate_counts(sir_data = sir_dt,
-                   main_data = main_dt,
-                   end_date = "2024-10-01")
+  calculate_counts(
+    sir_data = sir_dt,
+    main_data = main_dt,
+    end_date = "2024-10-01"
+  )
 
 rates_dt <-
   calculate_rates(counts_data = counts_dt)
 
 
 mx_rr_t1 <-
-  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
-                        yr = unique(counts_dt[["year"]]),
-                        MoreArgs = list(dt = counts_dt),
-                        SIMPLIFY = FALSE))
+  data.table::rbindlist(mapply(
+    FUN = calculate_rr_CIs,
+    yr = unique(counts_dt[["year"]]),
+    MoreArgs = list(dt = counts_dt),
+    SIMPLIFY = FALSE
+  ))
 
 mx_rr_t1[, outcome := "Mortality"][, intervention := "LAB"]
 
 mx_rr_t0 <-
-  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
-                        yr = unique(counts_dt[["year"]]),
-                        MoreArgs = list(dt = counts_dt, invert = TRUE),
-                        SIMPLIFY = FALSE))
+  data.table::rbindlist(mapply(
+    FUN = calculate_rr_CIs,
+    yr = unique(counts_dt[["year"]]),
+    MoreArgs = list(dt = counts_dt, invert = TRUE),
+    SIMPLIFY = FALSE
+  ))
 
 mx_rr_t0[, outcome := "Mortality"][, intervention := "Other OST"]
 
 sc_rr_t1 <-
-  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
-                        yr = unique(counts_dt[["year"]]),
-                        MoreArgs = list(dt = counts_dt),
-                        SIMPLIFY = FALSE))
+  data.table::rbindlist(mapply(
+    FUN = calculate_rr_CIs,
+    yr = unique(counts_dt[["year"]]),
+    MoreArgs = list(dt = counts_dt),
+    SIMPLIFY = FALSE
+  ))
 
 sc_rr_t1[, outcome := "Successful completion"][, intervention := "LAB"]
 
 sc_rr_t0 <-
-  data.table::rbindlist(mapply(FUN = calculate_rr_CIs,
-                        yr = unique(counts_dt[["year"]]),
-                        MoreArgs = list(dt = counts_dt, invert = TRUE),
-                        SIMPLIFY = FALSE))
+  data.table::rbindlist(mapply(
+    FUN = calculate_rr_CIs,
+    yr = unique(counts_dt[["year"]]),
+    MoreArgs = list(dt = counts_dt, invert = TRUE),
+    SIMPLIFY = FALSE
+  ))
 
 sc_rr_t0[, outcome := "Successful completion"][, intervention := "Other OST"]
 

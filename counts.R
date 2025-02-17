@@ -7,7 +7,6 @@ sir_dt <- fread("data/SIR_table_for_VfM_linked.csv")
 
 prepare_sir_data <-
   function(sir_data, start_year = 2019) {
-
     sir_data <-
       sir_data[-which(duplicated(sir_data))]
 
@@ -22,7 +21,7 @@ prepare_sir_data <-
 stopifnot(sum(duplicated(sir_dt)) == 0)
 # ------------------------------------------
 
-prepare_main_data  <-
+prepare_main_data <-
   function(main_data) {
     # Filter to opiate clients
     main_dt <- main_dt[drug_grp == "Opiate", ]
@@ -45,13 +44,12 @@ prepare_main_data  <-
         "Other", disrsn
       )
     )]
- }
+  }
 
 calculate_counts <-
   function(i,
            sir_data = sir_dt,
            main_data = main_dt) {
-
     yrs <-
       unique(lubridate::year(unique(sir_data[["submoddt"]])))
 
@@ -105,11 +103,11 @@ dt_counts <-
 
 calculate_rates <-
   function(counts_dt) {
-
     all_outcomes_totals <-
       counts_dt[, lapply(.SD, sum),
-                by = year,
-                .SDcols = c("no_depot_bupe", "depot_bupe")]
+        by = year,
+        .SDcols = c("no_depot_bupe", "depot_bupe")
+      ]
 
     counts_dt <-
       data.table::merge.data.table(counts_dt,
@@ -130,12 +128,10 @@ calculate_rates <-
       by = .(year, outcome),
       .SDcols = c("depot_rate", "no_depot_rate")
     ]
-
-}
+  }
 
 plot_rates <-
   function(rates_dt) {
-
     dt_rates_long <-
       data.table::melt.data.table(
         rates_dt[

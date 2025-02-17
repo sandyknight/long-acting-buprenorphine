@@ -1,6 +1,8 @@
 data/
 *.
 ~.
+/.quarto/
+/_site/
 !.gitignore
 
 

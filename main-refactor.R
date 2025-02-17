@@ -22,7 +22,7 @@ dt[, year := year(submoddt)]
 
 dt <- dt[year > 2019, ]
 
-# Recode disrsn to have fewer categories
+# Recode disrsn to collapse the misc categories
 dt[, disrsn := fifelse(
   is.na(disd), "Retained",
   fifelse(
@@ -35,10 +35,8 @@ dt[, disrsn := fifelse(
   )
 )]
 
-# Create yearly date boundaries:
 yrs <- sort(unique(dt$year))
 
-# Instead of a loop, subtract a sequence of years from the maximum date:
 date_vec <- max(dt$submoddt) - years(seq_along(yrs))
 
 btwn_dates <- data.table(
@@ -48,8 +46,6 @@ btwn_dates <- data.table(
 )
 
 btwn_dates[, year := lubridate::year(enddate)]
-
-btwn_dates
 
 aggregate_annual_data <-
   function(dt, i, dates = btwn_dates) {

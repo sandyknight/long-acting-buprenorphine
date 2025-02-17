@@ -8,31 +8,31 @@
 #' Confidence level for CIs
 calculate_rr_CIs <-
   function(dt, yr, event = "Died", invert = FALSE, confidence_level = 0.95) {
-
     # Rename columns
 
     data.table::setnames(dt,
-                         new = c("year",
-                                 "outcome",
-                                 "control",
-                                 "intervention"))
+      new = c(
+        "year",
+        "outcome",
+        "control",
+        "intervention"
+      )
+    )
 
     # Convert figures to type `double` to prevent integer overflow
 
-    dt[, `:=`(control = as.double(control),
-              intervention = as.double(intervention))]
+    dt[, `:=`(
+      control = as.double(control),
+      intervention = as.double(intervention)
+    )]
 
     # Count events and non-events
 
     nonevents <-
-      dt[year == yr,
-              ][outcome != event
-              ][, .(control = sum(control), intervention = sum(intervention))]
+      dt[year == yr, ][outcome != event][, .(control = sum(control), intervention = sum(intervention))]
 
 
-    events <- dt[year == yr,
-                      ][outcome == event
-                      ][, .(control = sum(control), intervention = sum(intervention))]
+    events <- dt[year == yr, ][outcome == event][, .(control = sum(control), intervention = sum(intervention))]
 
 
     # Define parameter for RR calculation
@@ -59,7 +59,7 @@ calculate_rr_CIs <-
 
     # Calculate z parameter according to `confidence_level` parameter
     z_alpha <-
-      qnorm((1 - ((1 - confidence_level)/2)))
+      qnorm((1 - ((1 - confidence_level) / 2)))
 
     # Calculate CIs
     ci_log_rr_upper <- log(rr) + se_log_rr * z_alpha
@@ -67,16 +67,20 @@ calculate_rr_CIs <-
     ci_log_rr_lower <- log(rr) - se_log_rr * z_alpha
 
     # Clean-up and return results as a data frame
-    res <- c(rr,
-             exp(ci_log_rr_upper),
-             exp(ci_log_rr_lower))
+    res <- c(
+      rr,
+      exp(ci_log_rr_upper),
+      exp(ci_log_rr_lower)
+    )
 
     names(res) <- c("rr", "upper", "lower")
 
-    res <- data.frame(year = yr,
-                      rr = res[["rr"]],
-                      lower = res[["lower"]],
-                      upper = res[["upper"]])
+    res <- data.frame(
+      year = yr,
+      rr = res[["rr"]],
+      lower = res[["lower"]],
+      upper = res[["upper"]]
+    )
 
     return(res)
-}
+  }

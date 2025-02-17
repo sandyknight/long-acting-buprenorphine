@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>main2</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4be796efec7681f48d6e102ed8b2b828.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+<script src="site_libs/tabwid-1.1.3/tabwid.js"></script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<table class="caption-top table">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">title: “Long-acting buprenorphine” author: “Your Name” date: “2025-01-23” format: pptx: table-width: 80% table-height: 70% slide-level: 2 reference-doc: template.pptx execute: cache: false echo: false warning: false message: false</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>main_dt <span class="ot">&lt;-</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prepare_main_data</span>(<span class="at">main_data =</span> main_dt)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sir_dt <span class="ot">&lt;-</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prepare_sir_data</span>(<span class="at">sir_data =</span> sir_dt)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>counts_dt <span class="ot">&lt;-</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_counts</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">sir_data =</span> sir_dt,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">main_data =</span> main_dt,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">end_date =</span> <span class="st">"2024-10-01"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>rates_dt <span class="ot">&lt;-</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_rates</span>(<span class="at">counts_data =</span> counts_dt)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>mx_rr_t1 <span class="ot">&lt;-</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="fu">mapply</span>(</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">FUN =</span> calculate_rr_CIs,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">yr =</span> <span class="fu">unique</span>(counts_dt[[<span class="st">"year"</span>]]),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dt =</span> counts_dt),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>mx_rr_t1[, outcome <span class="sc">:</span><span class="er">=</span> <span class="st">"Mortality"</span>][, intervention <span class="sc">:</span><span class="er">=</span> <span class="st">"LAB"</span>]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>mx_rr_t0 <span class="ot">&lt;-</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="fu">mapply</span>(</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">FUN =</span> calculate_rr_CIs,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">yr =</span> <span class="fu">unique</span>(counts_dt[[<span class="st">"year"</span>]]),</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dt =</span> counts_dt, <span class="at">invert =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>mx_rr_t0[, outcome <span class="sc">:</span><span class="er">=</span> <span class="st">"Mortality"</span>][, intervention <span class="sc">:</span><span class="er">=</span> <span class="st">"Other OST"</span>]</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>sc_rr_t1 <span class="ot">&lt;-</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="fu">mapply</span>(</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">FUN =</span> calculate_rr_CIs,</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">yr =</span> <span class="fu">unique</span>(counts_dt[[<span class="st">"year"</span>]]),</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">MoreArgs =</span> <span class="fu">list</span>(</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">dt =</span> counts_dt,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">event =</span> <span class="st">"Successful completion"</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>sc_rr_t1[, outcome <span class="sc">:</span><span class="er">=</span> <span class="st">"Successful completion"</span>][, intervention <span class="sc">:</span><span class="er">=</span> <span class="st">"LAB"</span>]</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>sc_rr_t0 <span class="ot">&lt;-</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="fu">mapply</span>(</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">FUN =</span> calculate_rr_CIs,</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">yr =</span> <span class="fu">unique</span>(counts_dt[[<span class="st">"year"</span>]]),</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">MoreArgs =</span> <span class="fu">list</span>(</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">dt =</span> counts_dt,</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">invert =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>      <span class="at">event =</span> <span class="st">"Successful completion"</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>sc_rr_t0[, outcome <span class="sc">:</span><span class="er">=</span> <span class="st">"Successful completion"</span>][, intervention <span class="sc">:</span><span class="er">=</span> <span class="st">"Other OST"</span>]</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>relative_risks <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="at">l =</span> <span class="fu">list</span>(mx_rr_t1, mx_rr_t0, sc_rr_t1, sc_rr_t0))</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">fwrite</span>(relative_risks, <span class="st">"lab-relative-risks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="comparative-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="comparative-outcomes">Comparative outcomes</h2>
+<section id="from-october-to-october-from-2020-to-2024" class="level3">
+<h3 class="anchored" data-anchor-id="from-october-to-october-from-2020-to-2024">From October to October from 2020 to 2024</h3>
+</section>
+</section>
+<section id="summary-results" class="level2">
+<h2 class="anchored" data-anchor-id="summary-results">Summary results</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">setorder</span>(rates_dt, outcome, year)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  rates_dt <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">year =</span> forcats<span class="sc">::</span><span class="fu">as_factor</span>(year)) <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">depot_rate =</span> scales<span class="sc">::</span><span class="fu">percent</span>(depot_rate, <span class="at">accuracy =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">no_depot_rate =</span> scales<span class="sc">::</span><span class="fu">percent</span>(no_depot_rate, <span class="at">accuracy =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">set_header_labels</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Year"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Outcome"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LAB (n)"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LAB (%)"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"No LAB (n)"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"No LAB (%)"</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">colformat_int</span>(<span class="at">j =</span> <span class="dv">1</span>, <span class="at">big.mark =</span> <span class="st">""</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">fontsize</span>(<span class="at">size =</span> <span class="dv">8</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">padding</span>(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">padding.left =</span> <span class="fl">0.5</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">padding.right =</span> <span class="fl">0.1</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">padding.top =</span> <span class="fl">0.1</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">padding.bottom =</span> <span class="fl">0.1</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">part =</span> <span class="st">"all"</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">height_all</span>(<span class="at">height =</span> <span class="fl">0.2</span>, <span class="at">part =</span> <span class="st">"all"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">part =</span> <span class="st">"all"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">valign</span>(<span class="at">valign =</span> <span class="st">"center"</span>, <span class="at">part =</span> <span class="st">"all"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">autofit</span>()</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>ft</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-3aaa8d3c{}.cl-3aa355e4{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-3aa355ee{font-family:'DejaVu Sans';font-size:8pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-3aa62544{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:0.1pt;padding-top:0.1pt;padding-left:0.5pt;padding-right:0.1pt;line-height: 1;background-color:transparent;}.cl-3aa6468c{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa64696{width:1.868in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa64697{width:0.67in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa64698{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646a0{width:0.926in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646a1{width:0.975in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646a2{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646aa{width:1.868in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646ab{width:0.67in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646ac{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646ad{width:0.926in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646b4{width:0.975in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646b5{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646b6{width:1.868in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646be{width:0.67in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646bf{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646c0{width:0.926in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646c1{width:0.975in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646c8{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646c9{width:1.868in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646ca{width:0.67in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646d2{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646d3{width:0.926in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3aa646d4{width:0.975in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-3aaa8d3c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-3aa6468c"><p class="cl-3aa62544"><span class="cl-3aa355e4">Year</span></p></th><th class="cl-3aa64696"><p class="cl-3aa62544"><span class="cl-3aa355e4">Outcome</span></p></th><th class="cl-3aa64697"><p class="cl-3aa62544"><span class="cl-3aa355e4">LAB (n)</span></p></th><th class="cl-3aa64698"><p class="cl-3aa62544"><span class="cl-3aa355e4">LAB (%)</span></p></th><th class="cl-3aa646a0"><p class="cl-3aa62544"><span class="cl-3aa355e4">No LAB (n)</span></p></th><th class="cl-3aa646a1"><p class="cl-3aa62544"><span class="cl-3aa355e4">No LAB (%)</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2021</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Died</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">26</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">0.5%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">2,494</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">1.9%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2022</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Died</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">24</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">0.9%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">2,667</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">2.3%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2023</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Died</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">17</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">1.5%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">2,598</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">2.5%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2024</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Died</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">4</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">1.2%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">1,359</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">1.7%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2021</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Other</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">575</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">12.1%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">19,840</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">15.4%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2022</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Other</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">497</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">17.7%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">22,535</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">19.4%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2023</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Other</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">206</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">18.7%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">22,662</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">21.6%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2024</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Other</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">42</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">12.4%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">12,425</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">15.7%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646b5"><p class="cl-3aa62544"><span class="cl-3aa355ee">2021</span></p></td><td class="cl-3aa646b6"><p class="cl-3aa62544"><span class="cl-3aa355ee">Prison or transferred in custody</span></p></td><td class="cl-3aa646be"><p class="cl-3aa62544"><span class="cl-3aa355ee">280</span></p></td><td class="cl-3aa646bf"><p class="cl-3aa62544"><span class="cl-3aa355ee">5.9%</span></p></td><td class="cl-3aa646c0"><p class="cl-3aa62544"><span class="cl-3aa355ee">8,752</span></p></td><td class="cl-3aa646c1"><p class="cl-3aa62544"><span class="cl-3aa355ee">6.8%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646b5"><p class="cl-3aa62544"><span class="cl-3aa355ee">2022</span></p></td><td class="cl-3aa646b6"><p class="cl-3aa62544"><span class="cl-3aa355ee">Prison or transferred in custody</span></p></td><td class="cl-3aa646be"><p class="cl-3aa62544"><span class="cl-3aa355ee">205</span></p></td><td class="cl-3aa646bf"><p class="cl-3aa62544"><span class="cl-3aa355ee">7.3%</span></p></td><td class="cl-3aa646c0"><p class="cl-3aa62544"><span class="cl-3aa355ee">8,215</span></p></td><td class="cl-3aa646c1"><p class="cl-3aa62544"><span class="cl-3aa355ee">7.1%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646b5"><p class="cl-3aa62544"><span class="cl-3aa355ee">2023</span></p></td><td class="cl-3aa646b6"><p class="cl-3aa62544"><span class="cl-3aa355ee">Prison or transferred in custody</span></p></td><td class="cl-3aa646be"><p class="cl-3aa62544"><span class="cl-3aa355ee">73</span></p></td><td class="cl-3aa646bf"><p class="cl-3aa62544"><span class="cl-3aa355ee">6.6%</span></p></td><td class="cl-3aa646c0"><p class="cl-3aa62544"><span class="cl-3aa355ee">6,837</span></p></td><td class="cl-3aa646c1"><p class="cl-3aa62544"><span class="cl-3aa355ee">6.5%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646b5"><p class="cl-3aa62544"><span class="cl-3aa355ee">2024</span></p></td><td class="cl-3aa646b6"><p class="cl-3aa62544"><span class="cl-3aa355ee">Prison or transferred in custody</span></p></td><td class="cl-3aa646be"><p class="cl-3aa62544"><span class="cl-3aa355ee">20</span></p></td><td class="cl-3aa646bf"><p class="cl-3aa62544"><span class="cl-3aa355ee">5.9%</span></p></td><td class="cl-3aa646c0"><p class="cl-3aa62544"><span class="cl-3aa355ee">3,661</span></p></td><td class="cl-3aa646c1"><p class="cl-3aa62544"><span class="cl-3aa355ee">4.6%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2021</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Retained</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">3,242</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">68.1%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">89,749</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">69.8%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2022</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Retained</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">1,646</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">58.5%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">74,325</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">63.9%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2023</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Retained</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">640</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">58.2%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">64,219</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">61.3%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646a2"><p class="cl-3aa62544"><span class="cl-3aa355ee">2024</span></p></td><td class="cl-3aa646aa"><p class="cl-3aa62544"><span class="cl-3aa355ee">Retained</span></p></td><td class="cl-3aa646ab"><p class="cl-3aa62544"><span class="cl-3aa355ee">233</span></p></td><td class="cl-3aa646ac"><p class="cl-3aa62544"><span class="cl-3aa355ee">68.7%</span></p></td><td class="cl-3aa646ad"><p class="cl-3aa62544"><span class="cl-3aa355ee">56,880</span></p></td><td class="cl-3aa646b4"><p class="cl-3aa62544"><span class="cl-3aa355ee">71.8%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646b5"><p class="cl-3aa62544"><span class="cl-3aa355ee">2021</span></p></td><td class="cl-3aa646b6"><p class="cl-3aa62544"><span class="cl-3aa355ee">Successful completion</span></p></td><td class="cl-3aa646be"><p class="cl-3aa62544"><span class="cl-3aa355ee">637</span></p></td><td class="cl-3aa646bf"><p class="cl-3aa62544"><span class="cl-3aa355ee">13.4%</span></p></td><td class="cl-3aa646c0"><p class="cl-3aa62544"><span class="cl-3aa355ee">7,684</span></p></td><td class="cl-3aa646c1"><p class="cl-3aa62544"><span class="cl-3aa355ee">6.0%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646b5"><p class="cl-3aa62544"><span class="cl-3aa355ee">2022</span></p></td><td class="cl-3aa646b6"><p class="cl-3aa62544"><span class="cl-3aa355ee">Successful completion</span></p></td><td class="cl-3aa646be"><p class="cl-3aa62544"><span class="cl-3aa355ee">443</span></p></td><td class="cl-3aa646bf"><p class="cl-3aa62544"><span class="cl-3aa355ee">15.7%</span></p></td><td class="cl-3aa646c0"><p class="cl-3aa62544"><span class="cl-3aa355ee">8,507</span></p></td><td class="cl-3aa646c1"><p class="cl-3aa62544"><span class="cl-3aa355ee">7.3%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646b5"><p class="cl-3aa62544"><span class="cl-3aa355ee">2023</span></p></td><td class="cl-3aa646b6"><p class="cl-3aa62544"><span class="cl-3aa355ee">Successful completion</span></p></td><td class="cl-3aa646be"><p class="cl-3aa62544"><span class="cl-3aa355ee">163</span></p></td><td class="cl-3aa646bf"><p class="cl-3aa62544"><span class="cl-3aa355ee">14.8%</span></p></td><td class="cl-3aa646c0"><p class="cl-3aa62544"><span class="cl-3aa355ee">8,393</span></p></td><td class="cl-3aa646c1"><p class="cl-3aa62544"><span class="cl-3aa355ee">8.0%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3aa646c8"><p class="cl-3aa62544"><span class="cl-3aa355ee">2024</span></p></td><td class="cl-3aa646c9"><p class="cl-3aa62544"><span class="cl-3aa355ee">Successful completion</span></p></td><td class="cl-3aa646ca"><p class="cl-3aa62544"><span class="cl-3aa355ee">40</span></p></td><td class="cl-3aa646d2"><p class="cl-3aa62544"><span class="cl-3aa355ee">11.8%</span></p></td><td class="cl-3aa646d3"><p class="cl-3aa62544"><span class="cl-3aa355ee">4,947</span></p></td><td class="cl-3aa646d4"><p class="cl-3aa62544"><span class="cl-3aa355ee">6.2%</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+<section id="mortality-rates" class="level2">
+<h2 class="anchored" data-anchor-id="mortality-rates">Mortality rates</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rates</span>(rates_dt, <span class="at">event =</span> <span class="st">"Died"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default ggplot2 theme set to `theme_af`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default colours set.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default geom aesthetics set.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Using `main2` palette as only two colours are required.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/mx-rate-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="relative-risk-of-mortality" class="level2">
+<h2 class="anchored" data-anchor-id="relative-risk-of-mortality">Relative risk of mortality</h2>
+<ul>
+<li>Relative risk of mortality for those receiving long-acting buprenorphine</li>
+<li>Mean relative mortality risk over four years: 0.49</li>
+<li>Plot shows 95% confidence intervals</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rr</span>(mx_rr_t1, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/mx-rr-t1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="relative-risk-of-mortality-1" class="level2">
+<h2 class="anchored" data-anchor-id="relative-risk-of-mortality-1">Relative risk of mortality</h2>
+<ul>
+<li>Relative risk of mortality for those <em>not</em> receiving long-acting buprenorphine</li>
+<li>Mean relative mortality risk over four years: 2.33</li>
+<li>Plot shows 95% confidence intervals</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rr</span>(mx_rr_t0, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/mx-rr-t0-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="succesful-completion-rates" class="level2">
+<h2 class="anchored" data-anchor-id="succesful-completion-rates">Succesful completion rates</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rates</span>(rates_dt, <span class="st">"Successful completion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default ggplot2 theme set to `theme_af`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default colours set.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default geom aesthetics set.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Using `main2` palette as only two colours are required.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/sc-rate-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="relative-risks-successful-completion" class="level2">
+<h2 class="anchored" data-anchor-id="relative-risks-successful-completion">Relative risks: successful completion</h2>
+<ul>
+<li>Relative ‘risk’ of successful completion for those receiving long-acting buprenorphine</li>
+<li>Mean relative risk over four years: 2.03</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rr</span>(sc_rr_t1, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/sc-rr-t1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="relative-risks-successful-completion-1" class="level2">
+<h2 class="anchored" data-anchor-id="relative-risks-successful-completion-1">Relative risks: successful completion</h2>
+<ul>
+<li>Relative ‘risk’ of successful completion for those <em>not</em> receiving long-acting buprenorphine</li>
+<li>Mean relative risk over four years: 0.5</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rr</span>(sc_rr_t0, <span class="at">n =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/sc-rr-t0-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>main_dt <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"data/K3anon_FullDataset_for_VfM.csv"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>sir_dt <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">fread</span>(<span class="st">"data/SIR_table_for_VfM_linked.csv"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">invisible</span>(<span class="fu">lapply</span>(<span class="fu">list.files</span>(<span class="st">"R"</span>, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.[Rr]$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>), source))</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>main_dt <span class="ot">&lt;-</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prepare_main_data</span>(<span class="at">main_data =</span> main_dt)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>sir_dt <span class="ot">&lt;-</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prepare_sir_data</span>(<span class="at">sir_data =</span> sir_dt)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>counts_dt <span class="ot">&lt;-</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_counts</span>(</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">sir_data =</span> sir_dt,</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">main_data =</span> main_dt,</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">end_date =</span> <span class="st">"2024-04-01"</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>rates_dt <span class="ot">&lt;-</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate_rates</span>(<span class="at">counts_data =</span> counts_dt)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>mx_rr_t1 <span class="ot">&lt;-</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="fu">mapply</span>(</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">FUN =</span> calculate_rr_CIs,</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">yr =</span> <span class="fu">unique</span>(counts_dt[[<span class="st">"year"</span>]]),</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dt =</span> counts_dt),</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>mx_rr_t1[, outcome <span class="sc">:</span><span class="er">=</span> <span class="st">"Mortality"</span>][, intervention <span class="sc">:</span><span class="er">=</span> <span class="st">"LAB"</span>]</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>mx_rr_t0 <span class="ot">&lt;-</span></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="fu">mapply</span>(</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">FUN =</span> calculate_rr_CIs,</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">yr =</span> <span class="fu">unique</span>(counts_dt[[<span class="st">"year"</span>]]),</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">MoreArgs =</span> <span class="fu">list</span>(<span class="at">dt =</span> counts_dt, <span class="at">invert =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>mx_rr_t0[, outcome <span class="sc">:</span><span class="er">=</span> <span class="st">"Mortality"</span>][, intervention <span class="sc">:</span><span class="er">=</span> <span class="st">"Other OST"</span>]</span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>sc_rr_t1 <span class="ot">&lt;-</span></span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="fu">mapply</span>(</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">FUN =</span> calculate_rr_CIs,</span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">yr =</span> <span class="fu">unique</span>(counts_dt[[<span class="st">"year"</span>]]),</span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">MoreArgs =</span> <span class="fu">list</span>(</span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">dt =</span> counts_dt,</span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">event =</span> <span class="st">"Successful completion"</span></span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span></span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a>sc_rr_t1[, outcome <span class="sc">:</span><span class="er">=</span> <span class="st">"Successful completion"</span>][, intervention <span class="sc">:</span><span class="er">=</span> <span class="st">"LAB"</span>]</span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>sc_rr_t0 <span class="ot">&lt;-</span></span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="fu">mapply</span>(</span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">FUN =</span> calculate_rr_CIs,</span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">yr =</span> <span class="fu">unique</span>(counts_dt[[<span class="st">"year"</span>]]),</span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">MoreArgs =</span> <span class="fu">list</span>(</span>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>      <span class="at">dt =</span> counts_dt,</span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a>      <span class="at">invert =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a>      <span class="at">event =</span> <span class="st">"Successful completion"</span></span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">SIMPLIFY =</span> <span class="cn">FALSE</span></span>
+<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a>sc_rr_t0[, outcome <span class="sc">:</span><span class="er">=</span> <span class="st">"Successful completion"</span>][, intervention <span class="sc">:</span><span class="er">=</span> <span class="st">"Other OST"</span>]</span>
+<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a>relative_risks <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">rbindlist</span>(<span class="at">l =</span> <span class="fu">list</span>(mx_rr_t1, mx_rr_t0, sc_rr_t1, sc_rr_t0))</span>
+<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">fwrite</span>(relative_risks, <span class="st">"lab-relative-risks-fy.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="comparative-outcomes-1" class="level2">
+<h2 class="anchored" data-anchor-id="comparative-outcomes-1">Comparative outcomes</h2>
+<section id="financial-year-202021-to-202324" class="level3">
+<h3 class="anchored" data-anchor-id="financial-year-202021-to-202324">Financial year 2020/21 to 2023/24</h3>
+</section>
+</section>
+<section id="summary-results-1" class="level2">
+<h2 class="anchored" data-anchor-id="summary-results-1">Summary results</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">setorder</span>(rates_dt, outcome, year)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  rates_dt <span class="sc">|&gt;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">year =</span> forcats<span class="sc">::</span><span class="fu">as_factor</span>(year)) <span class="sc">|&gt;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">depot_rate =</span> scales<span class="sc">::</span><span class="fu">percent</span>(depot_rate, <span class="at">accuracy =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">no_depot_rate =</span> scales<span class="sc">::</span><span class="fu">percent</span>(no_depot_rate, <span class="at">accuracy =</span> <span class="fl">0.1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">|&gt;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">set_header_labels</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Year"</span>,</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Outcome"</span>,</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LAB (n)"</span>,</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LAB (%)"</span>,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"No LAB (n)"</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"No LAB (%)"</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">colformat_int</span>(<span class="at">j =</span> <span class="dv">1</span>, <span class="at">big.mark =</span> <span class="st">""</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">fontsize</span>(<span class="at">size =</span> <span class="dv">8</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">padding</span>(</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">padding.left =</span> <span class="fl">0.5</span>,</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">padding.right =</span> <span class="fl">0.1</span>,</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">padding.top =</span> <span class="fl">0.1</span>,</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">padding.bottom =</span> <span class="fl">0.1</span>,</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">part =</span> <span class="st">"all"</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">height_all</span>(<span class="at">height =</span> <span class="fl">0.2</span>, <span class="at">part =</span> <span class="st">"all"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">part =</span> <span class="st">"all"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">valign</span>(<span class="at">valign =</span> <span class="st">"center"</span>, <span class="at">part =</span> <span class="st">"all"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">autofit</span>()</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>ft</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-3dba028c{}.cl-3db3e280{font-family:'DejaVu Sans';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-3db3e28a{font-family:'DejaVu Sans';font-size:8pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-3db657f4{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:0.1pt;padding-top:0.1pt;padding-left:0.5pt;padding-right:0.1pt;line-height: 1;background-color:transparent;}.cl-3db6725c{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db6725d{width:1.868in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67266{width:0.67in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67267{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67270{width:0.926in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67271{width:0.975in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67272{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db6727a{width:1.868in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db6727b{width:0.67in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db6727c{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67284{width:0.926in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67285{width:0.975in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67286{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db6728e{width:1.868in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db6728f{width:0.67in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67290{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67298{width:0.926in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db67299{width:0.975in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db6729a{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db6729b{width:1.868in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db6729c{width:0.67in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db672a2{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db672a3{width:0.926in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db672a4{width:0.975in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db672a5{width:0.455in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db672ac{width:1.868in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db672ad{width:0.67in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db672ae{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db672af{width:0.926in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3db672b0{width:0.975in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-3dba028c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-3db6725c"><p class="cl-3db657f4"><span class="cl-3db3e280">Year</span></p></th><th class="cl-3db6725d"><p class="cl-3db657f4"><span class="cl-3db3e280">Outcome</span></p></th><th class="cl-3db67266"><p class="cl-3db657f4"><span class="cl-3db3e280">LAB (n)</span></p></th><th class="cl-3db67267"><p class="cl-3db657f4"><span class="cl-3db3e280">LAB (%)</span></p></th><th class="cl-3db67270"><p class="cl-3db657f4"><span class="cl-3db3e280">No LAB (n)</span></p></th><th class="cl-3db67271"><p class="cl-3db657f4"><span class="cl-3db3e280">No LAB (%)</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2021</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Died</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">21</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a">0.6%</span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">2,616</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">2.1%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2022</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Died</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">28</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a">1.5%</span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">2,730</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">2.5%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2023</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Died</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">3</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a">0.5%</span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">2,552</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">2.5%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67286"><p class="cl-3db657f4"><span class="cl-3db3e28a">2024</span></p></td><td class="cl-3db6728e"><p class="cl-3db657f4"><span class="cl-3db3e28a">Died</span></p></td><td class="cl-3db6728f"><p class="cl-3db657f4"><span class="cl-3db3e28a"></span></p></td><td class="cl-3db67290"><p class="cl-3db657f4"><span class="cl-3db3e28a"></span></p></td><td class="cl-3db67298"><p class="cl-3db657f4"><span class="cl-3db3e28a">221</span></p></td><td class="cl-3db67299"><p class="cl-3db657f4"><span class="cl-3db3e28a">0.4%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2021</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Other</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">599</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a">16.0%</span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">21,820</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">17.6%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2022</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Other</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">361</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a">18.8%</span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">22,745</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">20.8%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2023</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Other</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">93</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a">16.8%</span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">22,334</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">22.2%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2024</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Other</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">9</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a"></span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">1,614</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">2.8%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db6729a"><p class="cl-3db657f4"><span class="cl-3db3e28a">2021</span></p></td><td class="cl-3db6729b"><p class="cl-3db657f4"><span class="cl-3db3e28a">Prison or transferred in custody</span></p></td><td class="cl-3db6729c"><p class="cl-3db657f4"><span class="cl-3db3e28a">248</span></p></td><td class="cl-3db672a2"><p class="cl-3db657f4"><span class="cl-3db3e28a">6.6%</span></p></td><td class="cl-3db672a3"><p class="cl-3db657f4"><span class="cl-3db3e28a">9,069</span></p></td><td class="cl-3db672a4"><p class="cl-3db657f4"><span class="cl-3db3e28a">7.3%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db6729a"><p class="cl-3db657f4"><span class="cl-3db3e28a">2022</span></p></td><td class="cl-3db6729b"><p class="cl-3db657f4"><span class="cl-3db3e28a">Prison or transferred in custody</span></p></td><td class="cl-3db6729c"><p class="cl-3db657f4"><span class="cl-3db3e28a">135</span></p></td><td class="cl-3db672a2"><p class="cl-3db657f4"><span class="cl-3db3e28a">7.0%</span></p></td><td class="cl-3db672a3"><p class="cl-3db657f4"><span class="cl-3db3e28a">7,321</span></p></td><td class="cl-3db672a4"><p class="cl-3db657f4"><span class="cl-3db3e28a">6.7%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db6729a"><p class="cl-3db657f4"><span class="cl-3db3e28a">2023</span></p></td><td class="cl-3db6729b"><p class="cl-3db657f4"><span class="cl-3db3e28a">Prison or transferred in custody</span></p></td><td class="cl-3db6729c"><p class="cl-3db657f4"><span class="cl-3db3e28a">37</span></p></td><td class="cl-3db672a2"><p class="cl-3db657f4"><span class="cl-3db3e28a">6.7%</span></p></td><td class="cl-3db672a3"><p class="cl-3db657f4"><span class="cl-3db3e28a">6,652</span></p></td><td class="cl-3db672a4"><p class="cl-3db657f4"><span class="cl-3db3e28a">6.6%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db6729a"><p class="cl-3db657f4"><span class="cl-3db3e28a">2024</span></p></td><td class="cl-3db6729b"><p class="cl-3db657f4"><span class="cl-3db3e28a">Prison or transferred in custody</span></p></td><td class="cl-3db6729c"><p class="cl-3db657f4"><span class="cl-3db3e28a">2</span></p></td><td class="cl-3db672a2"><p class="cl-3db657f4"><span class="cl-3db3e28a"></span></p></td><td class="cl-3db672a3"><p class="cl-3db657f4"><span class="cl-3db3e28a">522</span></p></td><td class="cl-3db672a4"><p class="cl-3db657f4"><span class="cl-3db3e28a">0.9%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2021</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Retained</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">2,323</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a">62.1%</span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">81,703</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">66.1%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2022</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Retained</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">1,070</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a">55.7%</span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">68,405</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">62.4%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2023</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Retained</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">331</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a">59.7%</span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">60,496</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">60.0%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db67272"><p class="cl-3db657f4"><span class="cl-3db3e28a">2024</span></p></td><td class="cl-3db6727a"><p class="cl-3db657f4"><span class="cl-3db3e28a">Retained</span></p></td><td class="cl-3db6727b"><p class="cl-3db657f4"><span class="cl-3db3e28a">149</span></p></td><td class="cl-3db6727c"><p class="cl-3db657f4"><span class="cl-3db3e28a"></span></p></td><td class="cl-3db67284"><p class="cl-3db657f4"><span class="cl-3db3e28a">53,976</span></p></td><td class="cl-3db67285"><p class="cl-3db657f4"><span class="cl-3db3e28a">94.6%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db6729a"><p class="cl-3db657f4"><span class="cl-3db3e28a">2021</span></p></td><td class="cl-3db6729b"><p class="cl-3db657f4"><span class="cl-3db3e28a">Successful completion</span></p></td><td class="cl-3db6729c"><p class="cl-3db657f4"><span class="cl-3db3e28a">547</span></p></td><td class="cl-3db672a2"><p class="cl-3db657f4"><span class="cl-3db3e28a">14.6%</span></p></td><td class="cl-3db672a3"><p class="cl-3db657f4"><span class="cl-3db3e28a">8,424</span></p></td><td class="cl-3db672a4"><p class="cl-3db657f4"><span class="cl-3db3e28a">6.8%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db6729a"><p class="cl-3db657f4"><span class="cl-3db3e28a">2022</span></p></td><td class="cl-3db6729b"><p class="cl-3db657f4"><span class="cl-3db3e28a">Successful completion</span></p></td><td class="cl-3db6729c"><p class="cl-3db657f4"><span class="cl-3db3e28a">327</span></p></td><td class="cl-3db672a2"><p class="cl-3db657f4"><span class="cl-3db3e28a">17.0%</span></p></td><td class="cl-3db672a3"><p class="cl-3db657f4"><span class="cl-3db3e28a">8,369</span></p></td><td class="cl-3db672a4"><p class="cl-3db657f4"><span class="cl-3db3e28a">7.6%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db6729a"><p class="cl-3db657f4"><span class="cl-3db3e28a">2023</span></p></td><td class="cl-3db6729b"><p class="cl-3db657f4"><span class="cl-3db3e28a">Successful completion</span></p></td><td class="cl-3db6729c"><p class="cl-3db657f4"><span class="cl-3db3e28a">90</span></p></td><td class="cl-3db672a2"><p class="cl-3db657f4"><span class="cl-3db3e28a">16.2%</span></p></td><td class="cl-3db672a3"><p class="cl-3db657f4"><span class="cl-3db3e28a">8,745</span></p></td><td class="cl-3db672a4"><p class="cl-3db657f4"><span class="cl-3db3e28a">8.7%</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3db672a5"><p class="cl-3db657f4"><span class="cl-3db3e28a">2024</span></p></td><td class="cl-3db672ac"><p class="cl-3db657f4"><span class="cl-3db3e28a">Successful completion</span></p></td><td class="cl-3db672ad"><p class="cl-3db657f4"><span class="cl-3db3e28a">3</span></p></td><td class="cl-3db672ae"><p class="cl-3db657f4"><span class="cl-3db3e28a"></span></p></td><td class="cl-3db672af"><p class="cl-3db657f4"><span class="cl-3db3e28a">733</span></p></td><td class="cl-3db672b0"><p class="cl-3db657f4"><span class="cl-3db3e28a">1.3%</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+<section id="mortality-rates-1" class="level2">
+<h2 class="anchored" data-anchor-id="mortality-rates-1">Mortality rates</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rates</span>(rates_dt, <span class="at">event =</span> <span class="st">"Died"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default ggplot2 theme set to `theme_af`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default colours set.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default geom aesthetics set.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Using `main2` palette as only two colours are required.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_col()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/mx-rate-fy-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="relative-risk-of-mortality-2" class="level2">
+<h2 class="anchored" data-anchor-id="relative-risk-of-mortality-2">Relative risk of mortality</h2>
+<ul>
+<li>Relative risk of mortality for those receiving long-acting buprenorphine</li>
+<li>Mean relative mortality risk over four years: NA</li>
+<li>Plot shows 95% confidence intervals</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rr</span>(mx_rr_t1, <span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/mx-rr-t1-fy-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="relative-risk-of-mortality-3" class="level2">
+<h2 class="anchored" data-anchor-id="relative-risk-of-mortality-3">Relative risk of mortality</h2>
+<ul>
+<li>Relative risk of mortality for those <em>not</em> receiving long-acting buprenorphine</li>
+<li>Mean relative mortality risk over four years: NA</li>
+<li>Plot shows 95% confidence intervals</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rr</span>(mx_rr_t0, <span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/mx-rr-t0-fy-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="succesful-completion-rates-1" class="level2">
+<h2 class="anchored" data-anchor-id="succesful-completion-rates-1">Succesful completion rates</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rates</span>(rates_dt, <span class="st">"Successful completion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default ggplot2 theme set to `theme_af`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default colours set.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Default geom aesthetics set.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Using `main2` palette as only two colours are required.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_col()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/sc-rate-fy-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="relative-risks-successful-completion-2" class="level2">
+<h2 class="anchored" data-anchor-id="relative-risks-successful-completion-2">Relative risks: successful completion</h2>
+<ul>
+<li>Relative ‘risk’ of successful completion for those receiving long-acting buprenorphine</li>
+<li>Mean relative risk over four years: NA</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rr</span>(sc_rr_t1, <span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/sc-rr-t1-fy-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="relative-risks-successful-completion-3" class="level2">
+<h2 class="anchored" data-anchor-id="relative-risks-successful-completion-3">Relative risks: successful completion</h2>
+<ul>
+<li>Relative ‘risk’ of successful completion for those <em>not</em> receiving long-acting buprenorphine</li>
+<li>Mean relative risk over four years: NA</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_rr</span>(sc_rr_t0, <span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main2_files/figure-html/sc-rr-t0-fy-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
